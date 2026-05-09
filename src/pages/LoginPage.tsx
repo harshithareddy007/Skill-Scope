@@ -1,115 +1,134 @@
 import { Link } from "react-router-dom";
+import { Lock, Mail, Quote } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedinIn } from "react-icons/fa";
 
-import {
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
-
-function LoginPage() {
-
+export default function LoginPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#000F08] text-white flex items-center justify-center px-6 py-16">
-
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#FB3640]/10 blur-[140px] rounded-full" />
-
-      <div className="relative z-10 w-full max-w-md">
-
-        <div className="bg-white/[0.03] border border-white/10 rounded-[36px] p-8 lg:p-10 backdrop-blur-2xl">
-
-          <div className="flex items-center gap-4">
-
-            <div className="w-14 h-14 rounded-2xl bg-[#FB3640]/15 border border-[#FB3640]/20 flex items-center justify-center">
-
-              <Sparkles
-                size={24}
-                className="text-[#FB3640]"
-              />
-
+    <main className="flex min-h-screen w-full bg-[#030303] font-sans text-white selection:bg-[#FF4400]/30 selection:text-white">
+      
+      {/* =========================================
+          LEFT SIDE: THE FORM (Centered in its half)
+          ========================================= */}
+      <div className="flex w-full flex-col justify-center px-8 sm:px-16 lg:w-1/2 xl:px-32 2xl:px-48">
+        
+        <div className="w-full max-w-[440px] mx-auto">
+          
+          <Link to="/" className="mb-12 flex items-center gap-3 w-fit">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF4400]">
+              <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_8px_white] animate-pulse" />
             </div>
+            <h1 className="text-xl font-semibold tracking-tight">SkillScope AI</h1>
+          </Link>
 
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-[#FB3640]">
-                SkillScope AI
-              </p>
-
-              <h1 className="text-4xl font-bold mt-2">
-                Welcome Back
-              </h1>
-
-            </div>
-
+          <div className="mb-8">
+            <h2 className="text-4xl font-semibold tracking-tight text-white mb-2">
+              Welcome back
+            </h2>
+            <p className="text-sm text-gray-400 font-light">
+              Sign in to continue refining your career intelligence.
+            </p>
           </div>
 
-          <p className="text-gray-400 text-lg leading-relaxed mt-8">
+          <div className="flex items-center gap-4 mb-6">
+            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
+              <FcGoogle size={18} />
+              <span>Google</span>
+            </button>
+            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
+              <FaLinkedinIn size={18} className="text-[#0A66C2]" />
+              <span>LinkedIn</span>
+            </button>
+          </div>
 
-            Continue your AI-powered career journey
-            and unlock intelligent resume insights.
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px flex-1 bg-white/20" />
+            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+              Or continue with email
+            </span>
+            <div className="h-px flex-1 bg-white/20" />
+          </div>
 
-          </p>
-
-          <div className="flex flex-col gap-5 mt-10">
-
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-gray-500 mb-3">
-                Email Address
-              </p>
-
+          <div className="space-y-5">
+            <div className="relative">
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <Mail size={18} className="text-gray-500" />
+              </div>
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="w-full bg-black/30 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#FB3640]/40 transition-all duration-300 placeholder:text-gray-500"
+                placeholder="Work email"
+                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
               />
-
             </div>
 
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-gray-500 mb-3">
-                Password
-              </p>
-
+            <div className="relative">
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <Lock size={18} className="text-gray-500" />
+              </div>
               <input
                 type="password"
-                placeholder="Enter your password"
-                className="w-full bg-black/30 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#FB3640]/40 transition-all duration-300 placeholder:text-gray-500"
+                placeholder="Password"
+                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
               />
-
             </div>
 
-            <button className="group mt-4 inline-flex items-center justify-center gap-3 bg-[#FB3640] hover:bg-red-500 text-white py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-xl shadow-red-500/20">
+            <div className="flex items-center justify-between pt-1">
+              <label className="flex items-center gap-2 cursor-pointer group">
+                <input type="checkbox" className="w-4 h-4 rounded border-white/30 bg-white/[0.04] accent-[#FF4400]" />
+                <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Remember me</span>
+              </label>
+              <button className="text-sm text-[#FF4400] hover:text-[#FF5500] transition-colors font-medium">
+                Forgot password?
+              </button>
+            </div>
 
-              Sign In
-
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-all duration-300"
-              />
-
+            <button className="w-full mt-6 rounded-xl bg-[#FF4400] py-4 text-sm font-semibold text-white transition-all hover:bg-[#FF5500] active:scale-[0.98] shadow-[0_0_24px_rgba(255,68,0,0.25)]">
+              Sign in
             </button>
-
           </div>
 
-          <div className="mt-10 pt-8 border-t border-white/10 text-center">
+          <p className="mt-8 text-center text-sm text-gray-400">
+            New to SkillScope?{" "}
+            <Link to="/signup" className="text-[#FF4400] font-medium hover:text-[#FF5500] transition-colors">
+              Create an account
+            </Link>
+          </p>
 
-            <p className="text-gray-400">
+          <p className="mt-12 text-center text-[10px] text-gray-600 font-mono">
+            Protected with end-to-end encrypted sessions.
+          </p>
+        </div>
+      </div>
 
-              Don’t have an account?{" "}
+      {/* =========================================
+          RIGHT SIDE: EDGE-TO-EDGE VISUAL PANEL
+          ========================================= */}
+      <div className="relative hidden w-1/2 lg:flex flex-col justify-center overflow-hidden border-l border-white/10 bg-[#080808]">
+        
+        {/* Crisp Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        
+        {/* Deep ambient glows */}
+        <div className="absolute top-0 right-0 h-[800px] w-[800px] -translate-y-1/3 translate-x-1/3 rounded-full bg-[#FF4400]/15 blur-[160px] mix-blend-screen pointer-events-none" />
+        <div className="absolute bottom-0 left-0 h-[600px] w-[600px] translate-y-1/3 -translate-x-1/3 rounded-full bg-[#1D4ED8]/15 blur-[140px] mix-blend-screen pointer-events-none" />
+        
+        {/* Quote Content */}
+        <div className="relative z-10 w-full max-w-xl mx-auto px-12">
+          <Quote size={56} className="text-[#FF4400]/50 mb-10" />
+          
+          <h2 className="text-[2.25rem] leading-[1.25] font-medium tracking-tight text-white mb-12">
+            "SkillScope’s AI didn't just optimize my resume; it mapped the exact system design dependencies I needed to land my Senior Engineering role."
+          </h2>
 
-              <Link
-                to="/signup"
-                className="text-white font-semibold hover:text-[#FB3640] transition-all duration-300"
-              >
-
-                Create Account
-
-              </Link>
-
-            </p>
-
+          <div className="flex items-center gap-5">
+            <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#FF4400] to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[#FF4400]/25">
+              JD
+            </div>
+            <div>
+              <p className="text-lg font-medium text-white">Jane Doe</p>
+              <p className="text-sm font-mono text-[#FF4400]">Senior ML Engineer, TechCorp</p>
+            </div>
           </div>
-
         </div>
 
       </div>
@@ -117,5 +136,3 @@ function LoginPage() {
     </main>
   );
 }
-
-export default LoginPage;

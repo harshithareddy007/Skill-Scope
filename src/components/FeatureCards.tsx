@@ -1,149 +1,150 @@
-import {
-  BrainCircuit,
-  Radar,
-  Route,
-  ArrowUpRight,
-} from "lucide-react";
+import { BrainCircuit, Radar, Route, ArrowRight, Terminal } from "lucide-react";
+import SpotlightCard from "./SpotlightCard";
 
-function FeatureCards() {
-
+export default function FeatureCards() {
   const features = [
     {
       title: "ATS Intelligence",
-      description:
-        "AI-powered resume analysis with ATS scoring, keyword optimization, and recruiter-readiness insights.",
 
+      description:
+        "AI-powered resume scoring, keyword optimization, and recruiter compatibility analysis.",
+      status: "Resume Intelligence Active",
       icon: BrainCircuit,
 
-      accent: "#FB3640",
+      tag: "CORE_SYSTEM",
     },
 
     {
       title: "Skill Gap Detection",
-      description:
-        "Compare your current skills against industry roles and identify missing competencies instantly.",
 
+      description:
+        "Identify missing skills and compare your profile against industry role requirements.",
+      status: "Real-time Skill Analysis",
       icon: Radar,
 
-      accent: "#89E900",
+      tag: "ANALYSIS_MODULE",
     },
 
     {
       title: "Career Roadmaps",
-      description:
-        "Generate personalized learning paths, project recommendations, and AI-guided career growth plans.",
 
+      description:
+        "Generate structured AI-guided growth paths tailored to your target career.",
+      status: "Personalized Growth Routing",
       icon: Route,
 
-      accent: "#7C3AED",
+      tag: "ROUTING_ENGINE",
     },
   ];
 
   return (
-    <div className="px-6 lg:px-12 py-28">
+    <section
+      id="platform"
+      className="relative overflow-hidden bg-[#030303] px-6 lg:px-12 py-28"
+    >
+      {/* GRID */}
 
-      <div className="max-w-7xl mx-auto">
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
+      </div>
 
-        <div className="max-w-3xl">
+      {/* GLOW */}
 
-          <p className="text-[#FB3640] uppercase tracking-[0.2em] text-sm font-medium">
-            AI-Powered Career Intelligence
-          </p>
+      <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-[#FF4400]/[0.05] blur-[180px]" />
 
-          <h2 className="text-5xl lg:text-6xl font-bold mt-6 leading-tight">
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* TOP */}
 
-            Everything you need to grow your career with AI.
+        <div className="max-w-6xl">
+          <div className="flex items-center gap-3 mb-6">
+            <Terminal size={14} className="text-[#FF4400]" />
 
+            <p className="text-[#FF4400] text-[10px] uppercase tracking-[0.28em] font-mono">
+              Platform Capabilities
+            </p>
+          </div>
+
+          {/* FIXED HEADING */}
+
+          <h2 className="text-[54px] leading-[1.1] tracking-[-0.035em] font-semibold text-white">
+            Everything required to scale your <br></br>
+            <span className="text-[#FF4400]"> career architecture.</span>
           </h2>
 
-          <p className="text-gray-400 text-xl leading-relaxed mt-8">
+          {/* SUBTEXT */}
 
-            SkillScope AI helps students and developers understand
-            their strengths, identify skill gaps, and accelerate
-            career growth with intelligent resume analytics.
-
+          <p className="mt-4 text-[18px] leading-relaxed text-gray-400 max-w-3xl">
+            SkillScope combines ATS intelligence, skill-gap analysis, and
+            AI-powered career systems into one futuristic workflow.
           </p>
-
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-20">
+        {/* CARDS */}
 
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
           {features.map((feature, index) => {
-
             const Icon = feature.icon;
 
             return (
-
-              <div
+              <SpotlightCard
                 key={index}
-                className="group relative overflow-hidden bg-white/[0.03] border border-white/10 rounded-[32px] p-8 lg:p-10 hover:-translate-y-2 hover:border-white/20 transition-all duration-500 backdrop-blur-2xl"
+                className="group relative h-[360px] rounded-[30px] border border-[#FF4400]/22 bg-white/[0.02] backdrop-blur-xl overflow-hidden shadow-[0_0_0_1px_rgba(255,68,0,0.04)]"
               >
+                {/* INNER BORDER */}
 
-                <div
-                  className="absolute top-0 right-0 w-52 h-52 blur-3xl opacity-20 rounded-full"
-                  style={{
-                    background: feature.accent,
-                  }}
-                />
+                <div className="absolute inset-[1px] rounded-[31px] border border-white/[0.04]" />
 
-                <div className="relative z-10">
+                {/* CONTENT */}
 
-                  <div
-                    className="w-16 h-16 rounded-2xl border flex items-center justify-center"
-                    style={{
-                      background: `${feature.accent}15`,
-                      borderColor: `${feature.accent}30`,
-                    }}
-                  >
+                <div className="relative z-10 flex flex-col h-full p-7">
+                  {/* TOP */}
 
-                    <Icon
-                      size={30}
-                      style={{
-                        color: feature.accent,
-                      }}
-                    />
+                  <div className="flex items-start justify-between">
+                    {/* ICON */}
 
-                  </div>
+                    <div className="w-14 h-14 rounded-2xl border border-white/10 bg-black/30 flex items-center justify-center">
+                      <Icon
+                        size={22}
+                        className="text-gray-400 group-hover:text-[#FF4400] transition-all duration-500"
+                      />
+                    </div>
 
-                  <h3 className="text-3xl font-bold mt-10 leading-tight">
+                    {/* TAG */}
 
-                    {feature.title}
-
-                  </h3>
-
-                  <p className="text-gray-400 leading-relaxed text-lg mt-6">
-
-                    {feature.description}
-
-                  </p>
-
-                  <div className="mt-10 flex items-center gap-3 text-sm text-gray-300 group-hover:text-white transition-all duration-300">
-
-                    <span>
-                      Explore Feature
+                    <span className="px-3 py-1 rounded-full border border-[#FF4400]/10 bg-[#FF4400]/[0.03] text-[9px] uppercase tracking-[0.2em] font-mono text-gray-500">
+                      {feature.tag}
                     </span>
-
-                    <ArrowUpRight
-                      size={18}
-                      className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300"
-                    />
-
                   </div>
 
+                  {/* TEXT */}
+
+                  <div className="mt-7">
+                    <h3 className="text-[34px] leading-[0.95] tracking-[-0.05em] font-semibold text-white">
+                      {feature.title}
+                    </h3>
+
+                    <p className="mt-5 text-[17px] leading-relaxed text-gray-400">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  {/* FOOTER */}
+
+                  <div className="mt-auto pt-7 border-t border-white/[0.06] flex items-center justify-between">
+                    <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] font-mono text-gray-500 group-hover:text-white transition-all duration-300">
+                      <span>{feature.status}</span>
+                    </div>
+
+                    {/* DOT */}
+
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#FF4400] opacity-50 group-hover:opacity-100 group-hover:shadow-[0_0_12px_#FF4400] transition-all duration-500" />
+                  </div>
                 </div>
-
-              </div>
-
+              </SpotlightCard>
             );
-
           })}
-
         </div>
-
       </div>
-
-    </div>
+    </section>
   );
 }
-
-export default FeatureCards;

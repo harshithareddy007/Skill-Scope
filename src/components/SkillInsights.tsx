@@ -1,166 +1,74 @@
-import {
-  Brain,
-  ShieldCheck,
-  TriangleAlert,
-} from "lucide-react";
+import { Terminal, CheckSquare, XSquare, Activity } from "lucide-react";
 
-function SkillInsights({
-  analysis,
-}: {
-  analysis: any;
-}) {
-
+export default function SkillInsights({ analysis }: { analysis: any }) {
   return (
-    <div className="relative overflow-hidden mt-10 bg-white/[0.03] border border-white/10 rounded-[32px] p-8 lg:p-10 backdrop-blur-2xl">
+    <div className="bg-[#030303] border border-white/[0.06] rounded-2xl p-8 h-full flex flex-col">
+      
+      {/* Technical Header */}
+      <div className="flex items-center gap-2 mb-8 pb-4 border-b border-white/[0.06]">
+        <Activity size={16} className="text-gray-400" />
+        <h2 className="text-sm font-mono tracking-widest text-white uppercase">
+          Output: Skill Telemetry
+        </h2>
+      </div>
 
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-500/10 blur-3xl rounded-full" />
-
-      <div className="relative z-10">
-
-        <div className="flex items-center gap-5">
-
-          <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
-
-            <Brain
-              size={28}
-              className="text-purple-400"
-            />
-
+      {!analysis ? (
+        // Empty Terminal State
+        <div className="flex-1 flex flex-col items-center justify-center text-center p-8 border border-dashed border-white/[0.05] rounded-xl">
+          <Terminal size={24} className="text-gray-600 mb-4" />
+          <p className="text-xs font-mono tracking-widest text-gray-500 uppercase">
+            Awaiting Data Ingestion...
+          </p>
+          <p className="text-[10px] font-mono text-gray-600 mt-2">
+            System requires resume parameters to map skill vectors.
+          </p>
+        </div>
+      ) : (
+        // Data Output State
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
+          
+          {/* Strengths Pane */}
+          <div className="bg-white/[0.01] border border-white/[0.04] rounded-xl p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <CheckSquare size={14} className="text-[#00FF66]" />
+              <h3 className="text-xs font-mono tracking-widest text-white uppercase">
+                Verified Vectors
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {analysis.strongAreas?.map((skill: string, index: number) => (
+                <div
+                  key={index}
+                  className="px-2.5 py-1 rounded-md bg-[#00FF66]/5 border border-[#00FF66]/20 text-[#00FF66] text-[11px] font-mono tracking-tight"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div>
-
-            <h2 className="text-4xl font-bold">
-              Skill Insights
-            </h2>
-
-            <p className="text-gray-400 mt-2 text-lg">
-              AI-generated strengths and skill-gap analysis
-            </p>
-
+          {/* Gaps Pane */}
+          <div className="bg-white/[0.01] border border-white/[0.04] rounded-xl p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <XSquare size={14} className="text-[#FF4400]" />
+              <h3 className="text-xs font-mono tracking-widest text-white uppercase">
+                Missing Dependencies
+              </h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {analysis.missingSkills?.map((skill: string, index: number) => (
+                <div
+                  key={index}
+                  className="px-2.5 py-1 rounded-md bg-[#FF4400]/5 border border-[#FF4400]/20 text-[#FF4400] text-[11px] font-mono tracking-tight"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
-
-        {!analysis ? (
-
-          <div className="mt-12 bg-black/20 border border-white/10 rounded-3xl p-8 text-gray-400 leading-relaxed">
-
-            Upload your resume to unlock AI-powered
-            skill intelligence and role-based insights.
-
-          </div>
-
-        ) : (
-
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-12">
-
-            <div className="bg-black/20 border border-white/10 rounded-[28px] p-8">
-
-              <div className="flex items-center gap-4 mb-8">
-
-                <div className="w-14 h-14 rounded-2xl bg-[#89E900]/10 border border-[#89E900]/20 flex items-center justify-center">
-
-                  <ShieldCheck
-                    size={24}
-                    className="text-[#89E900]"
-                  />
-
-                </div>
-
-                <div>
-
-                  <h3 className="text-2xl font-bold">
-                    Current Strengths
-                  </h3>
-
-                  <p className="text-gray-500 mt-1">
-                    Skills detected from your resume
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-
-                {analysis.strongAreas?.map(
-                  (
-                    skill: string,
-                    index: number
-                  ) => (
-
-                    <div
-                      key={index}
-                      className="px-5 py-3 rounded-2xl bg-[#89E900]/10 border border-[#89E900]/20 text-[#C9FF7A] font-medium hover:scale-105 transition-all duration-300"
-                    >
-                      {skill}
-                    </div>
-
-                  )
-                )}
-
-              </div>
-
-            </div>
-
-            <div className="bg-black/20 border border-white/10 rounded-[28px] p-8">
-
-              <div className="flex items-center gap-4 mb-8">
-
-                <div className="w-14 h-14 rounded-2xl bg-[#FB3640]/10 border border-[#FB3640]/20 flex items-center justify-center">
-
-                  <TriangleAlert
-                    size={24}
-                    className="text-[#FB3640]"
-                  />
-
-                </div>
-
-                <div>
-
-                  <h3 className="text-2xl font-bold">
-                    Skill Gaps
-                  </h3>
-
-                  <p className="text-gray-500 mt-1">
-                    Missing skills for your target role
-                  </p>
-
-                </div>
-
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-
-                {analysis.missingSkills?.map(
-                  (
-                    skill: string,
-                    index: number
-                  ) => (
-
-                    <div
-                      key={index}
-                      className="px-5 py-3 rounded-2xl bg-[#FB3640]/10 border border-[#FB3640]/20 text-[#FF9CA1] font-medium hover:scale-105 transition-all duration-300"
-                    >
-                      {skill}
-                    </div>
-
-                  )
-                )}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        )}
-
-      </div>
-
+      )}
     </div>
   );
 }
-
-export default SkillInsights;

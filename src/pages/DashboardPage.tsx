@@ -1,111 +1,69 @@
+import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import DashboardStats from "../components/DashboardStats";
 import DashboardTopbar from "../components/DashboardTopbar";
-import { useState } from "react";
+import { Activity, Database, GitBranch } from "lucide-react";
 
-function DashboardPage() {
+export default function DashboardPage() {
   const [analysis, setAnalysis] = useState<any>(null);
+  
   return (
-    <main className="min-h-screen bg-[#000F08] text-white overflow-hidden">
-
+    <main className="min-h-screen bg-[#030303] text-white overflow-hidden selection:bg-[#FF4400]/30 selection:text-white">
       <div className="flex flex-col lg:flex-row">
-
+        
         <Sidebar />
 
-        <div className="flex-1 min-h-screen">
-
+        <div className="flex-1 min-h-screen overflow-y-auto">
           <div className="px-6 lg:px-12 py-8 lg:py-10 max-w-[1700px] mx-auto">
-
+            
             <DashboardTopbar />
             <DashboardStats analysis={analysis} />
-            <div className="relative overflow-hidden mt-12 bg-white/[0.03] border border-white/10 rounded-[32px] p-8 lg:p-10 backdrop-blur-2xl">
-
-              <div className="absolute top-0 right-0 w-72 h-72 bg-[#FB3640]/10 blur-3xl rounded-full" />
-
-              <div className="relative z-10">
-
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-[#FB3640]/10 border border-[#FB3640]/20 text-sm text-[#FB3640]">
-
-                  AI Career Intelligence
-
+            
+            {/* System Status Banner */}
+            <div className="mt-12 bg-white/[0.02] border border-white/[0.06] rounded-2xl p-8 lg:p-10">
+              
+              <div className="flex flex-col max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-[#FF4400]/20 bg-[#FF4400]/5 w-fit mb-6">
+                  <div className="w-1.5 h-1.5 bg-[#FF4400] rounded-full animate-pulse" />
+                  <span className="text-[10px] font-mono tracking-widest text-[#FF4400] uppercase">
+                    Core Engine Online
+                  </span>
                 </div>
-
-                <h2 className="text-4xl lg:text-5xl font-bold mt-8 leading-tight max-w-4xl">
-
-                  Transform your resume into
-                  career intelligence.
-
+                
+                <h2 className="text-4xl lg:text-5xl font-medium tracking-tight mb-4">
+                  Transform raw data into career intelligence.
                 </h2>
-
-                <p className="text-gray-400 mt-8 text-xl leading-relaxed max-w-3xl">
-
-                  Analyze resumes, discover hidden skill gaps,
-                  improve ATS performance, and receive AI-powered
-                  recommendations tailored to your career goals.
-
+                <p className="text-gray-400 text-lg leading-relaxed font-light">
+                  Execute parsing algorithms to discover skill gaps, bypass ATS filters, and map career vectors with cryptographic precision.
                 </p>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-
-                  <div className="bg-black/20 border border-white/10 rounded-3xl p-6">
-
-                    <h3 className="text-3xl font-bold text-[#FB3640]">
-                      ATS
-                    </h3>
-
-                    <p className="text-gray-400 mt-3 leading-relaxed">
-
-                      Intelligent resume optimization
-                      powered by AI analysis.
-
-                    </p>
-
-                  </div>
-
-                  <div className="bg-black/20 border border-white/10 rounded-3xl p-6">
-
-                    <h3 className="text-3xl font-bold text-[#89E900]">
-                      Skills
-                    </h3>
-
-                    <p className="text-gray-400 mt-3 leading-relaxed">
-
-                      Discover strengths and identify
-                      missing role-based competencies.
-
-                    </p>
-
-                  </div>
-
-                  <div className="bg-black/20 border border-white/10 rounded-3xl p-6">
-
-                    <h3 className="text-3xl font-bold text-purple-400">
-                      Growth
-                    </h3>
-
-                    <p className="text-gray-400 mt-3 leading-relaxed">
-
-                      Generate personalized AI career
-                      roadmaps for long-term success.
-
-                    </p>
-
-                  </div>
-
+              {/* Bento Box Sub-features */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
+                <div className="bg-black/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/10 transition-colors">
+                  <Database size={18} className="text-[#FF4400] mb-4" />
+                  <h3 className="text-sm font-mono tracking-widest uppercase text-white mb-2">Ingestion</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">Algorithmic document parsing and entity extraction.</p>
+                </div>
+                
+                <div className="bg-black/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/10 transition-colors">
+                  <Activity size={18} className="text-white mb-4" />
+                  <h3 className="text-sm font-mono tracking-widest uppercase text-white mb-2">Telemetry</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">Real-time identification of missing competency nodes.</p>
                 </div>
 
+                <div className="bg-black/40 border border-white/[0.04] rounded-xl p-6 hover:border-white/10 transition-colors">
+                  <GitBranch size={18} className="text-white mb-4" />
+                  <h3 className="text-sm font-mono tracking-widest uppercase text-white mb-2">Routing</h3>
+                  <p className="text-xs text-gray-500 leading-relaxed">Dynamic generation of optimal career execution paths.</p>
+                </div>
               </div>
 
             </div>
 
           </div>
-
         </div>
-
       </div>
-
     </main>
   );
 }
-
-export default DashboardPage;

@@ -1,135 +1,154 @@
 import { Link } from "react-router-dom";
+import { Lock, Mail, User } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
+import { FaLinkedinIn } from "react-icons/fa";
 
-import {
-  ArrowRight,
-  Sparkles,
-} from "lucide-react";
-
-function SignupPage() {
-
+export default function SignupPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#000F08] text-white flex items-center justify-center px-6 py-16">
-
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-[#FB3640]/10 blur-[140px] rounded-full" />
-
-      <div className="relative z-10 w-full max-w-md">
-
-        <div className="bg-white/[0.03] border border-white/10 rounded-[36px] p-8 lg:p-10 backdrop-blur-2xl">
-
-          <div className="flex items-center gap-4">
-
-            <div className="w-14 h-14 rounded-2xl bg-[#FB3640]/15 border border-[#FB3640]/20 flex items-center justify-center">
-
-              <Sparkles
-                size={24}
-                className="text-[#FB3640]"
-              />
-
+    <main className="flex min-h-screen w-full bg-[#030303] font-sans text-white selection:bg-[#FF4400]/30 selection:text-white">
+      
+      {/* =========================================
+          LEFT SIDE: EDGE-TO-EDGE VISUAL PANEL
+          ========================================= */}
+      <div className="relative hidden w-1/2 lg:flex flex-col justify-center overflow-hidden border-r border-white/10 bg-[#080808]">
+        
+        {/* Crisp Grid Background */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[size:64px_64px]" />
+        
+        {/* Tech/Hacker ambient glows */}
+        <div className="absolute top-0 left-0 h-[800px] w-[800px] -translate-y-1/3 -translate-x-1/3 rounded-full bg-[#00FF66]/10 blur-[160px] mix-blend-screen pointer-events-none" />
+        <div className="absolute bottom-0 right-0 h-[600px] w-[600px] translate-y-1/3 translate-x-1/3 rounded-full bg-[#FF4400]/15 blur-[140px] mix-blend-screen pointer-events-none" />
+        
+        {/* GLASS TERMINAL WINDOW */}
+        <div className="relative z-10 w-full max-w-xl mx-auto rounded-2xl border border-white/15 bg-black/60 backdrop-blur-2xl shadow-2xl overflow-hidden">
+          {/* Terminal Header */}
+          <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-5 py-4">
+            <div className="flex gap-2">
+              <div className="h-3 w-3 rounded-full bg-[#FF5F56]" />
+              <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
+              <div className="h-3 w-3 rounded-full bg-[#27C93F]" />
             </div>
-
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-[#FB3640]">
-                SkillScope AI
-              </p>
-
-              <h1 className="text-4xl font-bold mt-2">
-                Create Account
-              </h1>
-
+            <div className="flex-1 text-center">
+              <span className="text-xs font-mono text-gray-400">core_engine_init.sh</span>
             </div>
-
           </div>
-
-          <p className="text-gray-400 text-lg leading-relaxed mt-8">
-
-            Start your AI-powered career journey and
-            unlock intelligent resume insights.
-
-          </p>
-
-          <div className="flex flex-col gap-5 mt-10">
-
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-gray-500 mb-3">
-                Full Name
-              </p>
-
-              <input
-                type="text"
-                placeholder="Enter your full name"
-                className="w-full bg-black/30 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#FB3640]/40 transition-all duration-300 placeholder:text-gray-500"
-              />
-
+          
+          {/* Terminal Body */}
+          <div className="p-8 font-mono text-sm leading-relaxed tracking-wider">
+            <div className="text-gray-500 mb-5">{">"} INITIALIZING SECURE ENVIRONMENT...</div>
+            <div className="text-[#00FF66] mb-3">[OK] Core dependencies loaded.</div>
+            <div className="text-[#00FF66] mb-8">[OK] Neural pathways established.</div>
+            
+            <div className="text-gray-500 mb-3">{">"} AWAITING OPERATOR INPUT...</div>
+            <div className="text-gray-300 mb-8 pl-5 border-l-2 border-[#FF4400]/50">
+              System ready to parse resume vectors.<br/>
+              Standing by to generate career roadmap.
             </div>
 
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-gray-500 mb-3">
-                Email Address
-              </p>
-
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-black/30 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#FB3640]/40 transition-all duration-300 placeholder:text-gray-500"
-              />
-
+            <div className="flex items-center gap-3">
+              <span className="text-[#FF4400] font-bold">{">"}</span>
+              <span className="h-5 w-2.5 bg-white animate-pulse" />
             </div>
-
-            <div>
-
-              <p className="text-sm uppercase tracking-wide text-gray-500 mb-3">
-                Password
-              </p>
-
-              <input
-                type="password"
-                placeholder="Create a password"
-                className="w-full bg-black/30 border border-white/10 rounded-2xl px-5 py-4 outline-none focus:border-[#FB3640]/40 transition-all duration-300 placeholder:text-gray-500"
-              />
-
-            </div>
-
-            <button className="group mt-4 inline-flex items-center justify-center gap-3 bg-[#FB3640] hover:bg-red-500 text-white py-4 rounded-2xl font-semibold text-lg transition-all duration-300 shadow-xl shadow-red-500/20">
-
-              Create Account
-
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-1 transition-all duration-300"
-              />
-
-            </button>
-
           </div>
-
-          <div className="mt-10 pt-8 border-t border-white/10 text-center">
-
-            <p className="text-gray-400">
-
-              Already have an account?{" "}
-
-              <Link
-                to="/login"
-                className="text-white font-semibold hover:text-[#FB3640] transition-all duration-300"
-              >
-
-                Sign In
-
-              </Link>
-
-            </p>
-
-          </div>
-
         </div>
 
+      </div>
+
+      {/* =========================================
+          RIGHT SIDE: THE FORM (Centered in its half)
+          ========================================= */}
+      <div className="flex w-full flex-col justify-center px-8 sm:px-16 lg:w-1/2 xl:px-32 2xl:px-48">
+        
+        <div className="w-full max-w-[440px] mx-auto">
+          
+          <Link to="/" className="mb-12 flex items-center gap-3 w-fit">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF4400]">
+              <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_8px_white] animate-pulse" />
+            </div>
+            <h1 className="text-xl font-semibold tracking-tight">SkillScope AI</h1>
+          </Link>
+
+          <div className="mb-8">
+            <h2 className="text-4xl font-semibold tracking-tight text-white mb-2">
+              Build your future
+            </h2>
+            <p className="text-sm text-gray-400 font-light">
+              Start with a smarter resume, finish with a sharper career.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-4 mb-6">
+            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
+              <FcGoogle size={18} />
+              <span>Google</span>
+            </button>
+            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
+              <FaLinkedinIn size={18} className="text-[#0A66C2]" />
+              <span>LinkedIn</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px flex-1 bg-white/20" />
+            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
+              Or continue with email
+            </span>
+            <div className="h-px flex-1 bg-white/20" />
+          </div>
+
+          <div className="space-y-5">
+            <div className="relative">
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <User size={18} className="text-gray-500" />
+              </div>
+              <input
+                type="text"
+                placeholder="Full name"
+                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 pr-12 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
+              />
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <Mail size={18} className="text-gray-500" />
+              </div>
+              <input
+                type="email"
+                placeholder="Work email"
+                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 pr-12 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
+              />
+            </div>
+
+            <div className="relative">
+              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <Lock size={18} className="text-gray-500" />
+              </div>
+              <input
+                type="password"
+                placeholder="Create password"
+                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 pr-12 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
+              />
+            </div>
+
+            <button className="w-full mt-6 rounded-xl bg-[#FF4400] py-4 text-sm font-semibold text-white transition-all hover:bg-[#FF5500] active:scale-[0.98] shadow-[0_0_24px_rgba(255,68,0,0.25)]">
+              Create account
+            </button>
+          </div>
+
+          <p className="mt-8 text-center text-sm text-gray-400">
+            Already have an account?{" "}
+            <Link to="/login" className="text-[#FF4400] font-medium hover:text-[#FF5500] transition-colors">
+              Sign in
+            </Link>
+          </p>
+
+          <p className="mt-12 text-center text-[10px] text-gray-600 font-mono">
+            By creating an account you agree to our Terms & Privacy.
+          </p>
+
+        </div>
       </div>
 
     </main>
   );
 }
-
-export default SignupPage;
