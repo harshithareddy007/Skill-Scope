@@ -10,11 +10,8 @@ router.post("/upload", upload.single("resume"), async (req, res) => {
   try {
 
     const extractedText = await extractTextFromPDF(req.file.path);
-
     const targetRole = req.body.targetRole;
-
-    console.log("TARGET ROLE:", targetRole);
-
+    
     const analysis = await analyzeResume(
       extractedText,
       targetRole

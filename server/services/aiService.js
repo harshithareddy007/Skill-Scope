@@ -6,20 +6,12 @@ const ollama = new Ollama({
 
 const analyzeResume = async (resumeText, targetRole) => {
   const prompt = `
-Analyze this resume for the role: ${targetRole}
+Analyze this resume for ATS optimization and recruiter readiness.
 
-Return ONLY valid JSON.
-
-IMPORTANT:
-- atsScore should be from 0 to 100
-- improvementSuggestions MUST contain at least 3 items
-- missingSkills should be role-specific
-- strongAreas should contain technical strengths
-
-Format:
+Return ONLY valid JSON in this format:
 
 {
-  "atsScore": 85,
+  "atsScore": number,
   "missingSkills": [],
   "strongAreas": [],
   "improvementSuggestions": [],
@@ -50,7 +42,21 @@ ${resumeText}
     throw new Error("No valid JSON found from AI response");
   }
 
-  const parsedData = JSON.parse(jsonMatch[0]);
+  let parsedData;
+
+  try {
+    parsedData = JSON.parse(jsonMatch[0]);
+  } catch (error) {
+    console.log("JSON Parse Error:", error);
+
+    parsedData = {
+      atsScore: 0,
+      missingSkills: [],
+      strongAreas: [],
+      improvementSuggestions: ["AI response parsing failed"],
+      bestMatchingRoles: [],
+    };
+  }
 
   return parsedData;
 };
