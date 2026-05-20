@@ -10,7 +10,6 @@ import SolutionsSection from "../components/SolutionsSection";
 
 import RoadmapsSection from "../components/RoadmapsSection";
 
-import { Sparkles } from "lucide-react";
 
 export default function LandingPage() {
   return (

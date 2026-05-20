@@ -1,8 +1,4 @@
-import {
-  Link,
-  Navigate,
-  useNavigate,
-} from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import {
   Lock,
@@ -10,18 +6,13 @@ import {
   User,
   Eye,
   EyeOff,
-  Sparkles,
-  ArrowRight,
 } from "lucide-react";
 
 import { FcGoogle } from "react-icons/fc";
 
 import { FaLinkedinIn } from "react-icons/fa";
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
 import { supabase } from "../lib/supabase";
 
@@ -32,50 +23,36 @@ export default function SignupPage() {
      STATES
   ========================================= */
 
-  const [name, setName] =
-    useState("");
+  const [name, setName] = useState("");
 
-  const [email, setEmail] =
-    useState("");
+  const [email, setEmail] = useState("");
 
-  const [password, setPassword] =
-    useState("");
+  const [password, setPassword] = useState("");
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [showPassword, setShowPassword] =
-    useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const [errorMessage, setErrorMessage] =
-    useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const [
-    checkingSession,
-    setCheckingSession,
-  ] = useState(true);
+  const [checkingSession, setCheckingSession] = useState(true);
 
-  const [
-    isAuthenticated,
-    setIsAuthenticated,
-  ] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   /* =========================================
      SESSION CHECK
   ========================================= */
 
   useEffect(() => {
-    const checkSession =
-      async () => {
-        const { data } =
-          await supabase.auth.getSession();
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
 
-        if (data.session) {
-          setIsAuthenticated(true);
-        }
+      if (data.session) {
+        setIsAuthenticated(true);
+      }
 
-        setCheckingSession(false);
-      };
+      setCheckingSession(false);
+    };
 
     checkSession();
   }, []);
@@ -84,65 +61,49 @@ export default function SignupPage() {
      SIGNUP
   ========================================= */
 
-  const handleSignup =
-    async () => {
-      if (
-        !name ||
-        !email ||
-        !password
-      ) {
-        setErrorMessage(
-          "Please fill all fields"
-        );
+  const handleSignup = async () => {
+    if (!name || !email || !password) {
+      setErrorMessage("Please fill all fields");
+
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      setErrorMessage("");
+
+      const { error } = await supabase.auth.signUp({
+        email,
+
+        password,
+
+        options: {
+          data: {
+            full_name: name,
+          },
+        },
+      });
+
+      if (error) {
+        setErrorMessage(error.message);
 
         return;
       }
 
-      try {
-        setLoading(true);
+      navigate("/dashboard");
+    } catch (err) {
+      console.log(err);
 
-        setErrorMessage("");
-
-        const { error } =
-          await supabase.auth.signUp({
-            email,
-
-            password,
-
-            options: {
-              data: {
-                full_name: name,
-              },
-            },
-          });
-
-        if (error) {
-          setErrorMessage(
-            error.message
-          );
-
-          return;
-        }
-
-        navigate("/dashboard");
-      } catch (err) {
-        console.log(err);
-
-        setErrorMessage(
-          "Something went wrong"
-        );
-      } finally {
-        setLoading(false);
-      }
-    };
+      setErrorMessage("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   /* =========================================
      DEMO LOGIN
   ========================================= */
-
-  const handleDemoAccess = () => {
-    navigate("/dashboard");
-  };
 
   /* =========================================
      LOADER
@@ -161,12 +122,7 @@ export default function SignupPage() {
   ========================================= */
 
   if (isAuthenticated) {
-    return (
-      <Navigate
-        to="/dashboard"
-        replace
-      />
-    );
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (
@@ -193,10 +149,6 @@ export default function SignupPage() {
 
           <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/[0.08] px-5 py-2">
             <div className="h-2 w-2 rounded-full bg-[#00FF66]" />
-
-            <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-zinc-400">
-              Demo Preview Build
-            </span>
           </div>
 
           {/* HEADING */}
@@ -204,39 +156,26 @@ export default function SignupPage() {
           <h2 className="text-[58px] font-semibold leading-[0.95] tracking-[-0.06em]">
             Build your
             <br />
-
-            <span className="text-[#FF4400]">
-              career system.
-            </span>
+            <span className="text-[#FF4400]">career system.</span>
           </h2>
 
           {/* TEXT */}
 
           <p className="mt-8 max-w-lg text-[17px] leading-relaxed text-zinc-400">
-            Explore SkillScope’s
-            AI-powered interface,
-            interactive career workflows,
-            and futuristic learning
-            experience.
+            Explore SkillScope’s AI-powered interface, interactive career
+            workflows, and futuristic learning experience.
           </p>
 
           {/* TERMINAL */}
 
           <div className="mt-12 space-y-4 font-mono text-sm">
             <div className="text-zinc-500">
-              {">"} initializing
-              skill engine...
+              {">"} initializing skill engine...
             </div>
 
-            <div className="text-[#00FF66]">
-              [OK] ATS optimization
-              active
-            </div>
+            <div className="text-[#00FF66]">[OK] ATS optimization active</div>
 
-            <div className="text-[#00FF66]">
-              [OK] roadmap generation
-              ready
-            </div>
+            <div className="text-[#00FF66]">[OK] roadmap generation ready</div>
 
             <div className="flex items-center gap-2 text-[#FF4400]">
               <span>{">"}</span>
@@ -255,10 +194,7 @@ export default function SignupPage() {
         <div className="mx-auto w-full max-w-[440px]">
           {/* LOGO */}
 
-          <Link
-            to="/"
-            className="mb-14 flex w-fit items-center gap-3"
-          >
+          <Link to="/" className="mb-14 flex w-fit items-center gap-3">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/[0.08]">
               <div className="h-2 w-2 rounded-full bg-[#FF4400]" />
             </div>
@@ -270,11 +206,6 @@ export default function SignupPage() {
 
           {/* DEMO BADGE */}
 
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-xs font-medium text-[#FF4400]">
-            <Sparkles size={14} />
-            UI/UX Demo Preview
-          </div>
-
           {/* HEADING */}
 
           <div className="mb-10">
@@ -283,43 +214,10 @@ export default function SignupPage() {
             </h2>
 
             <p className="mt-3 text-sm text-zinc-500">
-              Experience the SkillScope
-              interface and explore the
-              complete user journey.
+              Experience the SkillScope interface and explore the complete user
+              journey.
             </p>
           </div>
-
-          {/* DEMO BUTTON */}
-
-          <button
-            onClick={handleDemoAccess}
-            className="
-              group
-              mb-6
-              flex
-              w-full
-              items-center
-              justify-center
-              gap-3
-              rounded-2xl
-              bg-[#FF4400]
-              px-5
-              py-4
-              text-sm
-              font-semibold
-              transition-all
-              duration-300
-              hover:bg-[#ff5a1f]
-              active:scale-[0.99]
-            "
-          >
-            Enter Demo Workspace
-
-            <ArrowRight
-              size={17}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </button>
 
           {/* SOCIALS */}
 
@@ -331,10 +229,7 @@ export default function SignupPage() {
             </button>
 
             <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-sm transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]">
-              <FaLinkedinIn
-                size={16}
-                className="text-[#0A66C2]"
-              />
+              <FaLinkedinIn size={16} className="text-[#0A66C2]" />
 
               <span>LinkedIn</span>
             </button>
@@ -359,21 +254,14 @@ export default function SignupPage() {
 
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                <User
-                  size={18}
-                  className="text-zinc-500"
-                />
+                <User size={18} className="text-zinc-500" />
               </div>
 
               <input
                 type="text"
                 placeholder="Full name"
                 value={name}
-                onChange={(e) =>
-                  setName(
-                    e.target.value
-                  )
-                }
+                onChange={(e) => setName(e.target.value)}
                 className="
                   w-full
                   rounded-2xl
@@ -399,21 +287,14 @@ export default function SignupPage() {
 
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center">
-                <Mail
-                  size={18}
-                  className="text-zinc-500"
-                />
+                <Mail size={18} className="text-zinc-500" />
               </div>
 
               <input
                 type="email"
                 placeholder="Work email"
                 value={email}
-                onChange={(e) =>
-                  setEmail(
-                    e.target.value
-                  )
-                }
+                onChange={(e) => setEmail(e.target.value)}
                 className="
                   w-full
                   rounded-2xl
@@ -439,25 +320,14 @@ export default function SignupPage() {
 
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-4 flex items-center">
-                <Lock
-                  size={18}
-                  className="text-zinc-500"
-                />
+                <Lock size={18} className="text-zinc-500" />
               </div>
 
               <input
-                type={
-                  showPassword
-                    ? "text"
-                    : "password"
-                }
+                type={showPassword ? "text" : "password"}
                 placeholder="Create password"
                 value={password}
-                onChange={(e) =>
-                  setPassword(
-                    e.target.value
-                  )
-                }
+                onChange={(e) => setPassword(e.target.value)}
                 className="
                   w-full
                   rounded-2xl
@@ -480,27 +350,17 @@ export default function SignupPage() {
 
               <button
                 type="button"
-                onClick={() =>
-                  setShowPassword(
-                    !showPassword
-                  )
-                }
+                onClick={() => setShowPassword(!showPassword)}
                 className="absolute inset-y-0 right-4 flex items-center text-zinc-500 transition-colors hover:text-white"
               >
-                {showPassword ? (
-                  <EyeOff size={18} />
-                ) : (
-                  <Eye size={18} />
-                )}
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
 
             {/* ERROR */}
 
             {errorMessage && (
-              <p className="text-sm text-red-500">
-                {errorMessage}
-              </p>
+              <p className="text-sm text-red-500">{errorMessage}</p>
             )}
 
             {/* BUTTON */}
@@ -524,9 +384,7 @@ export default function SignupPage() {
                 disabled:opacity-50
               "
             >
-              {loading
-                ? "Creating account..."
-                : "Create account"}
+              {loading ? "Creating account..." : "Create account"}
             </button>
           </div>
 
@@ -534,7 +392,6 @@ export default function SignupPage() {
 
           <p className="mt-8 text-center text-sm text-zinc-500">
             Already have an account?{" "}
-
             <Link
               to="/login"
               className="font-medium text-[#FF4400] transition-colors hover:text-[#FF5522]"
@@ -544,10 +401,6 @@ export default function SignupPage() {
           </p>
 
           {/* FOOTER */}
-
-          <p className="mt-14 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-700">
-            Demo Preview • UI/UX Review
-          </p>
         </div>
       </div>
     </main>

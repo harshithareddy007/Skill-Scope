@@ -6,8 +6,6 @@ import {
   Quote,
   Eye,
   EyeOff,
-  Sparkles,
-  ArrowRight,
 } from "lucide-react";
 
 import { FcGoogle } from "react-icons/fc";
@@ -121,10 +119,6 @@ export default function LoginPage() {
      DEMO LOGIN
   ========================================= */
 
-  const handleDemoLogin = () => {
-    navigate("/dashboard");
-  };
-
   /* =========================================
      LOADING SCREEN
   ========================================= */
@@ -173,12 +167,6 @@ export default function LoginPage() {
             </h1>
           </Link>
 
-          {/* DEMO BADGE */}
-
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-xs font-medium text-[#FF4400]">
-            <Sparkles size={14} />
-            UI/UX Demo Preview
-          </div>
 
           {/* HEADER */}
 
@@ -195,37 +183,6 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* DEMO BUTTON */}
-
-          <button
-            onClick={handleDemoLogin}
-            className="
-              group
-              mb-6
-              flex
-              w-full
-              items-center
-              justify-center
-              gap-3
-              rounded-2xl
-              bg-[#FF4400]
-              px-5
-              py-4
-              text-sm
-              font-semibold
-              transition-all
-              duration-300
-              hover:bg-[#ff5a1f]
-              active:scale-[0.99]
-            "
-          >
-            Enter Demo Workspace
-
-            <ArrowRight
-              size={17}
-              className="transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </button>
 
           {/* DIVIDER */}
 
@@ -439,9 +396,7 @@ export default function LoginPage() {
 
           {/* FOOTER */}
 
-          <p className="mt-10 text-center text-[10px] font-mono uppercase tracking-[0.18em] text-zinc-600">
-            Demo Preview Build • UI/UX Review
-          </p>
+        
         </div>
       </div>
 
