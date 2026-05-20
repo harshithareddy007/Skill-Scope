@@ -48,15 +48,7 @@ export default function LandingPage() {
       ========================================= */}
 
       <div className="relative">
-        {/* DEMO BADGE */}
-
-        <div className="absolute left-1/2 top-28 z-20 -translate-x-1/2">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[#FF4400] backdrop-blur-xl">
-            <Sparkles size={14} />
-
-            UI/UX Demo Preview
-          </div>
-        </div>
+        
 
         <HeroSection />
       </div>

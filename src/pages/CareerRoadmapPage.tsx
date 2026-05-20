@@ -131,16 +131,7 @@ export default function CareerRoadmapPage() {
 
       <DashboardTopbar />
 
-      {/* =========================================
-          DEMO BADGE
-      ========================================= */}
-
-      <div className="fixed top-[96px] right-6 z-40">
-        <div className="rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-xs font-medium text-[#FF4400] backdrop-blur-xl">
-          Demo Preview
-        </div>
-      </div>
-
+    
       {/* =========================================
           BACKGROUND
       ========================================= */}
