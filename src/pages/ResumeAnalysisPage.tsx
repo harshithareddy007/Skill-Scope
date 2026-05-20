@@ -58,11 +58,6 @@ export default function ResumeAnalysisPage() {
     setBestMatchingRoles,
   ] = useState<string[]>([]);
 
-  const [
-    recruiterReadiness,
-    setRecruiterReadiness,
-  ] = useState("");
-
   const [error, setError] =
     useState("");
 
@@ -114,10 +109,6 @@ export default function ResumeAnalysisPage() {
           "UI Engineer",
           "Product Designer",
         ]);
-
-        setRecruiterReadiness(
-          "Your resume demonstrates strong frontend and design capabilities with excellent ATS readability and recruiter appeal."
-        );
 
         setUploadedFileName(
           uploadedFile.name

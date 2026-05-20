@@ -270,8 +270,6 @@ function RoadmapCard({
   isLeft,
   scrollYProgress,
   totalSteps,
-  smoothNormX,
-  smoothNormY,
 }: any) {
   const stepThreshold = 1 / totalSteps;
 
@@ -300,10 +298,6 @@ function RoadmapCard({
     [Math.max(0, activationPoint - 0.1), activationPoint + 0.1],
     [0, 1],
   );
-
-  const shadowX = useTransform(smoothNormX, [-1, 1], [30, -30]);
-
-  const shadowY = useTransform(smoothNormY, [-1, 1], [30, -30]);
 
   const boxShadow = useMotionTemplate`
   0 0 20px rgba(232,93,42, ${useTransform(glowOpacity, (v) => v * 0.08)})
