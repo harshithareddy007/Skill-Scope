@@ -1,8 +1,4 @@
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-} from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 
 import type { ReactNode } from "react";
 
@@ -15,73 +11,75 @@ export default function SpotlightCard({
   children,
   className = "",
 }: SpotlightCardProps) {
-
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  function handleMouseMove(
-    e: React.MouseEvent<HTMLDivElement>
-  ) {
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
 
-    const rect =
-      e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
 
-    mouseX.set(
-      e.clientX - rect.left
-    );
-
-    mouseY.set(
-      e.clientY - rect.top
-    );
-
+    mouseY.set(e.clientY - rect.top);
   }
 
   return (
-
     <motion.div
       onMouseMove={handleMouseMove}
-      className={`group relative overflow-hidden ${className}`}
+      whileHover={{
+        y: -4,
+      }}
+      transition={{
+        duration: 0.35,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={`
+        group
+        relative
+        overflow-hidden
+        transition-all
+        duration-500
+        ${className}
+      `}
     >
-
-      {/* SOFT ORANGE SPOTLIGHT */}
+      {/* =========================================
+          MAIN SPOTLIGHT
+      ========================================= */}
 
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              240px circle at ${mouseX}px ${mouseY}px,
-              rgba(255,68,0,0.10),
+              280px circle at ${mouseX}px ${mouseY}px,
+              rgba(232,93,42,0.14),
+              transparent 65%
+            )
+          `,
+        }}
+      />
+
+      {/* =========================================
+          SOFT INNER LIGHT
+      ========================================= */}
+
+      <motion.div
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              180px circle at ${mouseX}px ${mouseY}px,
+              rgba(255,255,255,0.045),
               transparent 60%
             )
           `,
         }}
       />
 
-      {/* SUBTLE BORDER LIGHT */}
+      {/* =========================================
+          CONTENT
+      ========================================= */}
 
-      <motion.div
-        className="pointer-events-none absolute inset-[1px] rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              180px circle at ${mouseX}px ${mouseY}px,
-              rgba(255,255,255,0.05),
-              transparent 55%
-            )
-          `,
-        }}
-      />
-
-      {/* CONTENT */}
-
-      <div className="relative z-10 h-full">
-
-        {children}
-
-      </div>
-
+      <div className="relative z-10 h-full">{children}</div>
     </motion.div>
-
   );
 }

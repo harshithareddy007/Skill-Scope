@@ -2,7 +2,6 @@ import {
   Sparkles,
   BrainCircuit,
   Route,
-  ArrowUpRight,
   LockKeyhole,
   Terminal,
 } from "lucide-react";
@@ -31,48 +30,65 @@ export default function MetricsSection() {
   return (
     <section
       id="insights"
-      className="relative overflow-hidden bg-[#030303] px-6 lg:px-12 py-20"
+      className="relative overflow-hidden bg-[var(--bg-primary)] px-6 lg:px-12 py-20"
     >
+      {/* =========================================
+          CINEMATIC BACKGROUND
+      ========================================= */}
+
       {/* GRID */}
 
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.022]">
         <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px]" />
       </div>
 
-      {/* GLOW */}
-
-      <div className="absolute top-[40%] left-[35%] w-[600px] h-[600px] rounded-full bg-[#FF4400]/10 blur-[180px]" />
+      {/* =========================================
+          CONTENT
+      ========================================= */}
 
       <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[0.78fr_1.22fr] gap-10 items-center">
-        {/* LEFT SECTION */}
+        {/* =========================================
+            LEFT SECTION
+        ========================================= */}
 
         <div>
           {/* LABEL */}
 
           <div className="flex items-center gap-3 mb-5">
-            <Terminal size={14} className="text-[#FF4400]" />
+            <Terminal
+              size={14}
+              className="text-[var(--accent)]"
+            />
 
-            <p className="text-[10px] uppercase tracking-[0.24em] font-mono text-[#FF4400]">
+            <p className="text-[10px] uppercase tracking-[0.24em] font-mono text-[var(--accent)]">
               Platform Preview
             </p>
           </div>
 
           {/* HEADING */}
 
-          <h2 className="text-[54px] leading-[0.92] tracking-[-0.07em] font-semibold text-white">
-            AI-native
+          <h2 className="text-[54px] leading-[0.92] tracking-[-0.07em] font-semibold">
+            <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+              AI-native
+            </span>
+
             <br />
-            career growth.
+
+            <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+              career growth.
+            </span>
           </h2>
 
           {/* SUBTEXT */}
 
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-gray-400">
-            Resume intelligence, skill analysis, and career planning - combined
-            into one modern workflow.
+          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-zinc-400">
+            Resume intelligence, skill analysis, and career planning —
+            combined into one modern workflow.
           </p>
 
-          {/* FEATURE CARDS */}
+          {/* =========================================
+              FEATURE CARDS
+          ========================================= */}
 
           <div className="mt-10 space-y-4">
             {features.map((feature, index) => {
@@ -81,20 +97,24 @@ export default function MetricsSection() {
               return (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-[28px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.02)] bg-white/[0.02] hover:bg-white/[0.03] transition-all duration-500 px-5 py-5"
+                  className="group relative overflow-hidden rounded-[28px] border border-white/[0.05] bg-transparent transition-all duration-500 px-5 py-5 hover:border-white/[0.08]"
                 >
-                  {/* HOVER GLOW */}
+                  {/* HOVER LIGHT */}
 
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_right,rgba(255,68,0,0.14),transparent_45%)]" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_45%)]" />
+
+                  {/* TOP SHINE */}
+
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       {/* ICON */}
 
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-black/40 ring-1 ring-white/10 group-hover:ring-[#FF4400]/20 transition-all duration-500">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.06] bg-white/[0.03] group-hover:border-[var(--accent)]/20 transition-all duration-500">
                         <Icon
                           size={20}
-                          className="text-[#FF4400] group-hover:scale-110 transition-transform duration-500"
+                          className="text-[var(--accent)] transition-transform duration-500 group-hover:scale-110"
                         />
                       </div>
 
@@ -105,12 +125,11 @@ export default function MetricsSection() {
                           {feature.title}
                         </h3>
 
-                        <p className="mt-1 text-sm text-gray-400">
+                        <p className="mt-1 text-sm text-zinc-400">
                           {feature.description}
                         </p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               );
@@ -118,47 +137,67 @@ export default function MetricsSection() {
           </div>
         </div>
 
-        {/* RIGHT SECTION */}
+        {/* =========================================
+            RIGHT SECTION
+        ========================================= */}
 
         <div className="relative">
           {/* OUTER CARD */}
 
-          <div className="relative overflow-hidden rounded-[36px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.03)] bg-white/[0.03] backdrop-blur-xl p-7 shadow-[0_0_80px_rgba(255,68,0,0.04)]">
-            {/* TOP */}
+          <div className="relative overflow-hidden rounded-[36px] border border-white/[0.05] bg-transparent backdrop-blur-md p-7">
+            {/* TOP SHINE */}
 
-            <div className="flex items-center justify-between mb-6">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          
+            {/* =========================================
+                HEADER
+            ========================================= */}
+
+            <div className="relative z-10 flex items-center justify-between mb-6">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.24em] font-mono text-gray-500">
+                <p className="text-[10px] uppercase tracking-[0.24em] font-mono text-zinc-500">
                   Dashboard Preview
                 </p>
 
-                <h2 className="mt-3 text-[44px] leading-[0.95] tracking-[-0.06em] font-semibold text-white">
-                  Your AI Career Workspace
+                <h2 className="mt-3 text-[44px] leading-[0.95] tracking-[-0.06em] font-semibold">
+                  <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                    Your AI Career Workspace
+                  </span>
                 </h2>
               </div>
 
               {/* PRIVATE CHIP */}
 
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF4400]/10 ring-1 ring-[#FF4400]/20">
-                <LockKeyhole size={14} className="text-[#FF4400]" />
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--accent)]/10 bg-[var(--accent)]/8 backdrop-blur-xl">
+                <LockKeyhole
+                  size={14}
+                  className="text-[var(--accent)]"
+                />
 
-                <span className="text-[10px] uppercase tracking-[0.18em] font-mono text-[#FF4400]">
+                <span className="text-[10px] uppercase tracking-[0.18em] font-mono text-[var(--accent)]">
                   Private
                 </span>
               </div>
             </div>
 
-            {/* DASHBOARD */}
+            {/* =========================================
+                DASHBOARD MOCKUP
+            ========================================= */}
 
-            <div className="group relative overflow-hidden rounded-[28px] border border-white/[0.06] shadow-[0_0_0_1px_rgba(255,255,255,0.02)] bg-black/30 min-h-[380px]">
+            <div className="group relative overflow-hidden rounded-[28px] border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl min-h-[380px]">
+              {/* BACKGROUND GLOW */}
+
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(232,93,42,0.08),transparent_45%)]" />
+
               {/* FAKE DASHBOARD */}
 
               <div className="absolute inset-0 p-5 transition-all duration-700 group-hover:blur-[2px] blur-[7px] scale-[1.03] opacity-70 group-hover:opacity-100">
                 <div className="grid grid-cols-2 gap-4 h-full">
                   {/* CARD 1 */}
 
-                  <div className="rounded-[30px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-mono">
+                  <div className="rounded-[30px] border border-white/[0.06] bg-white/[0.025] backdrop-blur-md p-5">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       ATS SCORE
                     </p>
 
@@ -166,19 +205,19 @@ export default function MetricsSection() {
                       94%
                     </h3>
 
-                    <div className="mt-6 w-full h-2 rounded-full bg-white/5">
-                      <div className="w-[88%] h-full rounded-full bg-[#FF4400]" />
+                    <div className="mt-6 w-full h-2 rounded-full bg-white/5 overflow-hidden">
+                      <div className="w-[88%] h-full rounded-full bg-[var(--accent)]" />
                     </div>
 
-                    <p className="mt-3 text-sm text-[#FF4400]">
+                    <p className="mt-3 text-sm text-[var(--accent)]">
                       Excellent optimization
                     </p>
                   </div>
 
                   {/* CARD 2 */}
 
-                  <div className="rounded-[30px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-mono">
+                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       SKILL MATCH
                     </p>
 
@@ -192,7 +231,7 @@ export default function MetricsSection() {
                       ].map((skill) => (
                         <div
                           key={skill}
-                          className="px-4 py-2 rounded-full bg-white/5 text-sm text-gray-300"
+                          className="px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.04] text-sm text-zinc-300"
                         >
                           {skill}
                         </div>
@@ -202,8 +241,8 @@ export default function MetricsSection() {
 
                   {/* CARD 3 */}
 
-                  <div className="rounded-[30px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-mono">
+                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       AI SUGGESTIONS
                     </p>
 
@@ -213,10 +252,15 @@ export default function MetricsSection() {
                         "Improve keyword density",
                         "Mention React projects",
                       ].map((item) => (
-                        <div key={item} className="flex items-center gap-3">
-                          <div className="w-2 h-2 rounded-full bg-[#FF4400]" />
+                        <div
+                          key={item}
+                          className="flex items-center gap-3"
+                        >
+                          <div className="w-2 h-2 rounded-full bg-[var(--accent)]" />
 
-                          <p className="text-sm text-gray-300">{item}</p>
+                          <p className="text-sm text-zinc-300">
+                            {item}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -224,25 +268,25 @@ export default function MetricsSection() {
 
                   {/* CARD 4 */}
 
-                  <div className="rounded-[30px] border border-white/[0.08] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
+                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-mono">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                         CAREER READINESS
                       </p>
 
-                      <h3 className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-white">
+                      <h3 className="mt-3 text-5xl font-semibold tracking-[-0.05em] text-white">
                         87%
                       </h3>
                     </div>
 
-                    <div className="w-full h-2 rounded-full bg-white/5">
+                    <div className="mt-4 w-full h-2 rounded-full bg-white/5 overflow-hidden">
                       <div className="w-[82%] h-full rounded-full bg-white" />
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* SILK GLASS OVERLAY */}
+              {/* GLASS OVERLAY */}
 
               <div
                 className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent backdrop-blur-xl transition-all duration-700 group-hover:backdrop-blur-md"
@@ -259,19 +303,24 @@ export default function MetricsSection() {
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 transition-all duration-700 group-hover:opacity-0 group-hover:scale-95">
                 {/* LOCK */}
 
-                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#FF4400]/10 ring-1 ring-[#FF4400]/20 backdrop-blur-xl">
-                  <LockKeyhole size={30} className="text-[#FF4400]" />
+                <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/15 backdrop-blur-xl">
+                  <LockKeyhole
+                    size={30}
+                    className="text-[var(--accent)]"
+                  />
                 </div>
 
                 {/* TITLE */}
 
-                <h3 className="mt-6 text-[40px] leading-none tracking-[-0.05em] font-semibold text-white">
-                  Unlock Your Dashboard
+                <h3 className="mt-6 text-[40px] leading-none tracking-[-0.05em] font-semibold">
+                  <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                    Unlock Your Dashboard
+                  </span>
                 </h3>
 
                 {/* TEXT */}
 
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-gray-400">
+                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-zinc-400">
                   Access resume intelligence, AI suggestions, career tracking,
                   and personalized growth insights.
                 </p>

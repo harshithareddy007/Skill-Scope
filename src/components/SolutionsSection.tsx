@@ -7,43 +7,58 @@ import {
   Code2,
   Briefcase,
   Sparkles,
-  ArrowRight,
   Terminal,
 } from "lucide-react";
 
 const solutions = [
   {
     icon: GraduationCap,
+
     title: "Students",
+
     stat: "92%",
+
     label: "Roadmap Completion",
+
     description:
       "Transform confusion into structured career direction with adaptive AI-generated growth systems.",
   },
 
   {
     icon: Code2,
+
     title: "Developers",
+
     stat: "ATS+",
+
     label: "Engineering Optimization",
+
     description:
       "Optimize technical resumes, portfolios, and skill alignment for modern engineering roles.",
   },
 
   {
     icon: Briefcase,
+
     title: "Career Switchers",
+
     stat: "3X",
+
     label: "Transition Clarity",
+
     description:
       "Identify transferable skills, missing capabilities, and the fastest transition pathways.",
   },
 
   {
     icon: Sparkles,
+
     title: "Job Seekers",
+
     stat: "AI",
+
     label: "Resume Intelligence",
+
     description:
       "Gain recruiter-focused resume insights, interview alignment, and strategic positioning.",
   },
@@ -67,51 +82,67 @@ export default function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="relative h-[calc(100vh-94px)] overflow-hidden bg-[#030303] flex items-center mt-[94px]"
+      className="relative h-[calc(100vh-94px)] overflow-hidden bg-[var(--bg-primary)] flex items-center mt-[94px]"
     >
-      {/* BACKGROUND */}
-
-      <div className="absolute inset-0 bg-black" />
+      {/* =========================================
+          CINEMATIC BACKGROUND
+      ========================================= */}
 
       {/* GRID */}
 
-      <div className="absolute inset-0 opacity-[0.03]">
+      <div className="absolute inset-0 opacity-[0.02]">
         <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:90px_90px]" />
       </div>
 
-      {/* GLOW */}
-
-      <div className="absolute top-[10%] right-[5%] w-[500px] h-[500px] rounded-full bg-[#FF4400]/10 blur-[140px]" />
-
-      {/* CONTENT */}
+      <div className="absolute inset-0 bg-[var(--bg-primary)]" />
+      {/* =========================================
+          CONTENT
+      ========================================= */}
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 py-10">
-        {/* HEADER */}
+        {/* =========================================
+            HEADER
+        ========================================= */}
 
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[#FF4400]/20 bg-white/[0.03]">
-            <Terminal size={14} className="text-[#FF4400]" />
+          {/* LABEL */}
 
-            <span className="text-[11px] uppercase tracking-[0.18em] font-mono text-gray-300">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-[var(--border-primary)] bg-[var(--surface-secondary)]/70 backdrop-blur-xl">
+            <Terminal size={14} className="text-[var(--accent)]" />
+
+            <span className="text-[11px] uppercase tracking-[0.18em] font-mono text-zinc-300">
               Solutions Architecture
             </span>
           </div>
 
-          <h2 className="mt-4 text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.06em] font-semibold text-white">
-            Built for every stage of{" "} <br></br>
-            <span className="text-[#FF4400]">career evolution.</span>
+          {/* HEADING */}
+
+          <h2 className="mt-4 text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.06em] font-semibold">
+            <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+              Built for every stage of
+            </span>
+
+            <br />
+
+            <span className="text-[var(--accent)]">career evolution.</span>
           </h2>
 
-          <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-gray-400">
-            SkillScope adapts dynamically to different career journeys -
+          {/* SUBTEXT */}
+
+          <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-zinc-400">
+            SkillScope adapts dynamically to different career journeys —
             intelligently reshaping workflows for every user type.
           </p>
         </div>
 
-        {/* MAIN LAYOUT */}
+        {/* =========================================
+            MAIN LAYOUT
+        ========================================= */}
 
         <div className="mt-6 grid grid-cols-12 gap-5 h-[330px]">
-          {/* ACTIVE LARGE CARD */}
+          {/* =========================================
+              ACTIVE CARD
+          ========================================= */}
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -131,35 +162,43 @@ export default function SolutionsSection() {
               transition={{
                 duration: 0.45,
               }}
-              className="col-span-12 lg:col-span-7 relative overflow-hidden rounded-[36px] border border-[#FF4400]/15 bg-white/[0.03] p-7"
+              className="col-span-12 lg:col-span-7 relative overflow-hidden rounded-[36px] border border-white/[0.05] p-7"
             >
               {/* GLOW */}
 
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,68,0,0.12),transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_60%)]" />
 
-              {/* TOP */}
+              {/* =========================================
+                  TOP
+              ========================================= */}
 
               <div className="relative z-10 flex items-start justify-between">
+                {/* LEFT */}
+
                 <div>
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-white/[0.08] bg-black/40">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-white/[0.06] bg-[var(--surface-primary)]">
                     <active.icon
                       size={28}
-                      className="text-[#FF4400]"
+                      className="text-[var(--accent)]"
                       strokeWidth={1.8}
                     />
                   </div>
 
-                  <h3 className="mt-6 text-[44px] leading-none tracking-[-0.06em] font-semibold text-white">
-                    {active.title}
+                  <h3 className="mt-6 text-[44px] leading-none tracking-[-0.06em] font-semibold">
+                    <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                      {active.title}
+                    </span>
                   </h3>
                 </div>
 
+                {/* RIGHT */}
+
                 <div className="text-right">
-                  <h4 className="text-[52px] leading-none tracking-[-0.06em] font-semibold text-[#FF4400]">
+                  <h4 className="text-[52px] leading-none tracking-[-0.06em] font-semibold text-[var(--accent)]">
                     {active.stat}
                   </h4>
 
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] font-mono text-gray-500">
+                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] font-mono text-zinc-500">
                     {active.label}
                   </p>
                 </div>
@@ -179,17 +218,16 @@ export default function SolutionsSection() {
                 transition={{
                   delay: 0.1,
                 }}
-                className="relative z-10 mt-6 max-w-lg text-[15px] leading-relaxed text-gray-400"
+                className="relative z-10 mt-6 max-w-lg text-[15px] leading-relaxed text-zinc-400"
               >
                 {active.description}
               </motion.p>
-              {/* ORB */}
-
-              <div className="absolute -bottom-20 -right-20 w-[260px] h-[260px] rounded-full border border-[#FF4400]/10 bg-[#FF4400]/5 blur-3xl" />
             </motion.div>
           </AnimatePresence>
 
-          {/* SIDE STACK */}
+          {/* =========================================
+              SIDE STACK
+          ========================================= */}
 
           <div className="col-span-12 lg:col-span-5 flex flex-col gap-4">
             {sideCards.map((item, index) => {
@@ -206,38 +244,52 @@ export default function SolutionsSection() {
                     duration: 0.25,
                   }}
                   className={`
-          relative overflow-hidden rounded-[30px]
-          border border-white/[0.06]
-          bg-white/[0.02]
-          px-6 py-5
-          transition-all duration-500
-          hover:border-[#FF4400]/20
-          flex flex-col justify-between
+group
+relative
+overflow-hidden
+rounded-[30px]
+border border-white/[0.05]
+px-6 py-5
+transition-all duration-500
+hover:border-[var(--accent)]/15
+flex flex-col justify-between
 
-          ${index === 0 ? "h-[112px]" : "h-[104px]"}
-        `}
+${index === 0 ? "h-[112px]" : "h-[104px]"}
+`}
                 >
+                  {/* HOVER GLOW */}
+
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.10),transparent_55%)]" />
+
                   {/* TOP */}
 
-                  <div className="flex items-start justify-between">
+                  <div className="relative z-10 flex items-start justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.06] bg-black/30">
-                        <Icon size={20} className="text-[#FF4400]" />
+                      {/* ICON */}
+
+                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.05] bg-[var(--surface-primary)]">
+                        <Icon size={20} className="text-[var(--accent)]" />
                       </div>
 
-                      <h4 className="text-[20px] leading-none tracking-[-0.05em] font-semibold text-white">
-                        {item.title}
+                      {/* TITLE */}
+
+                      <h4 className="text-[20px] leading-none tracking-[-0.05em] font-semibold">
+                        <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
+                          {item.title}
+                        </span>
                       </h4>
                     </div>
 
-                    <span className="text-[20px] font-semibold tracking-[-0.05em] text-[#FF4400]">
+                    {/* STAT */}
+
+                    <span className="text-[20px] font-semibold tracking-[-0.05em] text-[var(--accent)]">
                       {item.stat}
                     </span>
                   </div>
 
                   {/* LABEL */}
 
-                  <p className="text-[9px] uppercase tracking-[0.18em] font-mono text-gray-600 pl-16">
+                  <p className="relative z-10 text-[9px] uppercase tracking-[0.18em] font-mono text-zinc-600 pl-16">
                     {item.label}
                   </p>
                 </motion.div>

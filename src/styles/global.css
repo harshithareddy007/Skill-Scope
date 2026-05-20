@@ -1,14 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000F08;
-  --surface: rgba(255, 255, 255, 0.04);
-  --border: rgba(255, 255, 255, 0.08);
+  --bg-primary: #0F0F10;
+  --bg-secondary: #171717;
+  --bg-elevated: #1E1E1E;
 
-  --primary: #FB3640;
+  --surface-primary: #111111;
+  --surface-secondary: #181818;
+  --surface-tertiary: #202020;
 
-  --text-primary: #F5F5F5;
-  --text-secondary: #9CA3AF;
+  --border-primary: rgba(255,255,255,0.08);
+
+  --accent: #E85D2A;
+  --accent-hover: #F97316;
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
 }
 
 * {
@@ -23,18 +31,7 @@ body {
   margin: 0;
   padding: 0;
 
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(251, 54, 64, 0.12),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(255, 255, 255, 0.03),
-      transparent 25%
-    ),
-    var(--background);
+  background: var(--bg-primary);
 
   color: var(--text-primary);
 
@@ -60,6 +57,6 @@ button {
 }
 
 ::selection {
-  background: var(--primary);
+  background: var(--accent);
   color: white;
 }

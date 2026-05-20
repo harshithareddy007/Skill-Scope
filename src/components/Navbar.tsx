@@ -109,16 +109,13 @@ export default function Navbar() {
 
       <div className="max-w-7xl mx-auto">
 
-        <div className="relative overflow-hidden rounded-2xl border border-[#FF4400]/35 bg-black/80 backdrop-blur-2xl shadow-[0_0_0_1px_rgba(255,68,0,0.08),0_0_30px_rgba(255,68,0,0.06)]">
+        <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-black/30 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.28)]">
 
           {/* TOP BORDER GLOW */}
 
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/40 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--accent)]/30 to-transparent" />
 
-          {/* BACKGROUND LIGHT */}
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,68,0,0.06),transparent_60%)]" />
-
+          
           <div className="relative z-10 grid grid-cols-[1.2fr_1fr_1.2fr] items-center h-[74px] px-8">
 
             {/* =========================================
@@ -134,11 +131,11 @@ export default function Navbar() {
 
                 {/* LOGO */}
 
-                <div className="relative flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] overflow-hidden">
+                <div className="relative flex items-center justify-center w-11 h-11 rounded-xl border border-[var(--border-primary)] bg-white/[0.03] overflow-hidden">
 
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle,rgba(255,68,0,0.18),transparent_70%)]" />
 
-                  <div className="relative z-10 w-1.5 h-1.5 rounded-full bg-[#FF4400] shadow-[0_0_14px_#FF4400]" />
+                  <div className="relative z-10 w-1.5 h-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_18px_rgba(232,93,42,0.45)]" />
 
                 </div>
 
@@ -200,7 +197,7 @@ export default function Navbar() {
                         left-0
                         -bottom-2
                         h-px
-                        bg-[#FF4400]
+                        bg-[var(--accent)]
                         transition-all
                         duration-300
                         ${
@@ -240,7 +237,7 @@ export default function Navbar() {
 
               <Link
                 to="/signup"
-                className="group inline-flex items-center gap-3 rounded-full bg-white text-black px-6 py-3 text-[12px] uppercase tracking-[0.18em] font-medium transition-all duration-300 hover:-translate-y-[1px]"
+                className="group inline-flex items-center gap-3 rounded-full bg-[var(--accent)] text-white px-6 py-3 text-[12px] uppercase tracking-[0.18em] font-medium transition-all duration-300  hover:bg-[var(--accent-hover)] hover:-translate-y-[1px]"
               >
 
                 Get Started
@@ -254,7 +251,7 @@ export default function Navbar() {
 
               {/* MOBILE MENU */}
 
-              <button className="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/[0.03] text-gray-300 hover:text-white transition-all duration-300">
+              <button className="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl border border-[var(--border-primary)] bg-[var(--surface-secondary)] text-gray-300 hover:text-white transition-all duration-300">
 
                 <Menu
                   size={20}

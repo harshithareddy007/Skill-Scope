@@ -6,6 +6,7 @@ import DashboardPage from "../pages/DashboardPage";
 import ResumeAnalysisPage from "../pages/ResumeAnalysisPage";
 import SkillInsightsPage from "../pages/SkillInsightsPage";
 import CareerRoadmapPage from "../pages/CareerRoadmapPage";
+import ProfilePage from "../pages/ProfilePage";
 import ProtectedRoute from "../components/ProtectedRoute";
 
 function AppRoutes() {
@@ -24,14 +25,14 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/resume-analysis"
+          path="/ResumeAnalysisPage"
           element={
             <ProtectedRoute>
               <ResumeAnalysisPage />
             </ProtectedRoute>
           }
         />
-        <Route
+         <Route
           path="/skill-insights"
           element={
             <ProtectedRoute>
@@ -39,11 +40,19 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         />
-        <Route
+         <Route
           path="/career-roadmap"
           element={
             <ProtectedRoute>
               <CareerRoadmapPage />
+            </ProtectedRoute>
+          }
+        /> 
+         <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
             </ProtectedRoute>
           }
         />

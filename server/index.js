@@ -1,3 +1,4 @@
+require("dotenv").config();
 const resumeRoutes = require("./routes/resumeRoutes");
 
 const express = require("express");

@@ -1,66 +1,133 @@
-import { Link } from "react-router-dom";
-import { Lock, Mail, Quote, Eye, EyeOff } from "lucide-react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+
+import {
+  Mail,
+  Lock,
+  Quote,
+  Eye,
+  EyeOff,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
+
 import { FcGoogle } from "react-icons/fc";
+
 import { FaLinkedinIn } from "react-icons/fa";
+
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import { supabase } from "../lib/supabase";
-import { Navigate } from "react-router-dom";
 
 export default function LoginPage() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  /* =========================================
+     STATES
+  ========================================= */
 
-  const handleLogin = async () => {
-    if (!email || !password) {
-      setErrorMessage("Please fill all fields");
-      return;
-    }
+  const [email, setEmail] =
+    useState("");
 
-    try {
-      setLoading(true);
-      setErrorMessage("");
+  const [password, setPassword] =
+    useState("");
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+  const [loading, setLoading] =
+    useState(false);
 
-      if (error) {
-        setErrorMessage(error.message);
-        return;
-      }
+  const [errorMessage, setErrorMessage] =
+    useState("");
 
-      navigate("/dashboard");
-    } catch (err) {
-      console.error(err);
-      setErrorMessage("Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [showPassword, setShowPassword] =
+    useState(false);
 
-  const [checkingSession, setCheckingSession] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [
+    checkingSession,
+    setCheckingSession,
+  ] = useState(true);
+
+  const [
+    isAuthenticated,
+    setIsAuthenticated,
+  ] = useState(false);
+
+  /* =========================================
+     CHECK SESSION
+  ========================================= */
 
   useEffect(() => {
-    const checkSession = async () => {
-      const { data } = await supabase.auth.getSession();
+    const checkSession =
+      async () => {
+        const { data } =
+          await supabase.auth.getSession();
 
-      if (data.session) {
-        setIsAuthenticated(true);
-      }
+        if (data.session) {
+          setIsAuthenticated(true);
+        }
 
-      setCheckingSession(false);
-    };
+        setCheckingSession(false);
+      };
 
     checkSession();
   }, []);
+
+  /* =========================================
+     LOGIN
+  ========================================= */
+
+  const handleLogin =
+    async () => {
+      if (!email || !password) {
+        setErrorMessage(
+          "Please fill all fields"
+        );
+
+        return;
+      }
+
+      try {
+        setLoading(true);
+
+        setErrorMessage("");
+
+        const { error } =
+          await supabase.auth.signInWithPassword(
+            {
+              email,
+              password,
+            }
+          );
+
+        if (error) {
+          setErrorMessage(
+            error.message
+          );
+
+          return;
+        }
+
+        navigate("/dashboard");
+      } catch (err) {
+        console.log(err);
+
+        setErrorMessage(
+          "Something went wrong"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+  /* =========================================
+     DEMO LOGIN
+  ========================================= */
+
+  const handleDemoLogin = () => {
+    navigate("/dashboard");
+  };
+
+  /* =========================================
+     LOADING SCREEN
+  ========================================= */
 
   if (checkingSession) {
     return (
@@ -70,161 +137,358 @@ export default function LoginPage() {
     );
   }
 
+  /* =========================================
+     REDIRECT
+  ========================================= */
+
   if (isAuthenticated) {
-    return <Navigate to="/dashboard" replace />;
+    return (
+      <Navigate
+        to="/dashboard"
+        replace
+      />
+    );
   }
+
   return (
-    <main className="flex min-h-screen w-full bg-[#030303] font-sans text-white selection:bg-[#FF4400]/30 selection:text-white">
+    <main className="flex min-h-screen w-full overflow-hidden bg-[#030303] text-white">
       {/* =========================================
-          LEFT SIDE: THE FORM (Centered in its half)
-          ========================================= */}
+          LEFT SIDE
+      ========================================= */}
+
       <div className="flex w-full flex-col justify-center px-8 sm:px-16 lg:w-1/2 xl:px-32 2xl:px-48">
-        <div className="w-full max-w-[440px] mx-auto">
-          <Link to="/" className="mb-12 flex items-center gap-3 w-fit">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF4400]">
-              <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_8px_white] animate-pulse" />
+        <div className="mx-auto w-full max-w-[440px]">
+          {/* LOGO */}
+
+          <Link
+            to="/"
+            className="mb-12 flex w-fit items-center gap-3"
+          >
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FF4400]">
+              <div className="h-2 w-2 rounded-full bg-white shadow-[0_0_8px_white]" />
             </div>
+
             <h1 className="text-xl font-semibold tracking-tight">
               SkillScope AI
             </h1>
           </Link>
 
+          {/* DEMO BADGE */}
+
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-xs font-medium text-[#FF4400]">
+            <Sparkles size={14} />
+            UI/UX Demo Preview
+          </div>
+
+          {/* HEADER */}
+
           <div className="mb-8">
-            <h2 className="text-4xl font-semibold tracking-tight text-white mb-2">
+            <h2 className="mb-3 text-4xl font-semibold tracking-tight text-white">
               Welcome back
             </h2>
-            <p className="text-sm text-gray-400 font-light">
-              Sign in to continue refining your career intelligence.
+
+            <p className="text-sm leading-relaxed text-zinc-400">
+              Explore the SkillScope
+              experience and review the
+              interface, interactions, and
+              user flow.
             </p>
           </div>
 
-          <div className="flex items-center gap-4 mb-6">
-            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
+          {/* DEMO BUTTON */}
+
+          <button
+            onClick={handleDemoLogin}
+            className="
+              group
+              mb-6
+              flex
+              w-full
+              items-center
+              justify-center
+              gap-3
+              rounded-2xl
+              bg-[#FF4400]
+              px-5
+              py-4
+              text-sm
+              font-semibold
+              transition-all
+              duration-300
+              hover:bg-[#ff5a1f]
+              active:scale-[0.99]
+            "
+          >
+            Enter Demo Workspace
+
+            <ArrowRight
+              size={17}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </button>
+
+          {/* DIVIDER */}
+
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px flex-1 bg-white/[0.08]" />
+
+            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-zinc-500">
+              Optional Login
+            </span>
+
+            <div className="h-px flex-1 bg-white/[0.08]" />
+          </div>
+
+          {/* SOCIALS */}
+
+          <div className="mb-6 flex items-center gap-4">
+            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04]">
               <FcGoogle size={18} />
+
               <span>Google</span>
             </button>
-            <button className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] transition-all hover:bg-white/[0.08] hover:border-white/30 active:scale-95 text-sm font-medium">
-              <FaLinkedinIn size={18} className="text-[#0A66C2]" />
+
+            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.04]">
+              <FaLinkedinIn
+                size={18}
+                className="text-[#0A66C2]"
+              />
+
               <span>LinkedIn</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-4 mb-6">
-            <div className="h-px flex-1 bg-white/20" />
-            <span className="text-[10px] font-mono uppercase tracking-widest text-gray-400">
-              Or continue with email
+          {/* EMAIL DIVIDER */}
+
+          <div className="mb-6 flex items-center gap-4">
+            <div className="h-px flex-1 bg-white/[0.08]" />
+
+            <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-zinc-500">
+              Continue with Email
             </span>
-            <div className="h-px flex-1 bg-white/20" />
+
+            <div className="h-px flex-1 bg-white/[0.08]" />
           </div>
 
+          {/* FORM */}
+
           <div className="space-y-5">
+            {/* EMAIL */}
+
             <div className="relative">
-              <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
-                <Mail size={18} className="text-gray-500" />
-              </div>
               <input
                 type="email"
                 placeholder="Work email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-4 py-4 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
+                onChange={(e) =>
+                  setEmail(
+                    e.target.value
+                  )
+                }
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/[0.08]
+                  bg-white/[0.02]
+                  px-5
+                  py-4
+                  pr-12
+                  text-sm
+                  text-white
+                  outline-none
+                  transition-all
+                  duration-300
+                  placeholder:text-zinc-500
+                  hover:border-white/20
+                  focus:border-[#FF4400]
+                "
               />
+
+              <div className="absolute inset-y-0 right-4 flex items-center">
+                <Mail
+                  size={18}
+                  className="text-zinc-500"
+                />
+              </div>
             </div>
 
+            {/* PASSWORD */}
+
             <div className="relative">
-              <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <Lock size={18} className="text-gray-500" />
+              <div className="absolute inset-y-0 left-4 flex items-center">
+                <Lock
+                  size={18}
+                  className="text-zinc-500"
+                />
               </div>
 
               <input
-                type={showPassword ? "text" : "password"}
+                type={
+                  showPassword
+                    ? "text"
+                    : "password"
+                }
                 placeholder="Password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-xl border border-white/20 bg-white/[0.04] px-12 py-4 pr-12 text-sm text-white outline-none transition-all placeholder:text-gray-500 hover:border-white/30 focus:border-[#FF4400] focus:bg-white/[0.06]"
+                onChange={(e) =>
+                  setPassword(
+                    e.target.value
+                  )
+                }
+                className="
+                  w-full
+                  rounded-2xl
+                  border
+                  border-white/[0.08]
+                  bg-white/[0.02]
+                  px-12
+                  py-4
+                  pr-12
+                  text-sm
+                  text-white
+                  outline-none
+                  transition-all
+                  duration-300
+                  placeholder:text-zinc-500
+                  hover:border-white/20
+                  focus:border-[#FF4400]
+                "
               />
 
               <button
                 type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-4 flex items-center text-gray-500 hover:text-white transition-colors"
+                onClick={() =>
+                  setShowPassword(
+                    !showPassword
+                  )
+                }
+                className="absolute inset-y-0 right-4 flex items-center text-zinc-500 transition-colors hover:text-white"
               >
-                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                {showPassword ? (
+                  <EyeOff size={18} />
+                ) : (
+                  <Eye size={18} />
+                )}
               </button>
-
-              {errorMessage && (
-                <p className="mt-3 text-sm text-red-500">{errorMessage}</p>
-              )}
             </div>
+
+            {/* ERROR */}
+
+            {errorMessage && (
+              <p className="text-sm text-red-400">
+                {errorMessage}
+              </p>
+            )}
+
+            {/* OPTIONS */}
+
             <div className="flex items-center justify-between pt-1">
-              <label className="flex items-center gap-2 cursor-pointer group">
+              <label className="flex items-center gap-2 text-sm text-zinc-400">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 rounded border-white/30 bg-white/[0.04] accent-[#FF4400]"
+                  className="h-4 w-4 accent-[#FF4400]"
                 />
-                <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                  Remember me
-                </span>
+
+                Remember me
               </label>
-              <button className="text-sm text-[#FF4400] hover:text-[#FF5500] transition-colors font-medium">
+
+              <button className="text-sm text-[#FF4400] transition-colors hover:text-[#ff5a1f]">
                 Forgot password?
               </button>
             </div>
 
+            {/* LOGIN BUTTON */}
+
             <button
               onClick={handleLogin}
               disabled={loading}
-              className="w-full mt-6 rounded-xl bg-[#FF4400] py-4 text-sm font-semibold text-white transition-all hover:bg-[#FF5500] active:scale-[0.98] shadow-[0_0_24px_rgba(255,68,0,0.25)] disabled:opacity-50"
+              className="
+                w-full
+                rounded-2xl
+                border
+                border-white/[0.08]
+                bg-white/[0.04]
+                py-4
+                text-sm
+                font-semibold
+                transition-all
+                duration-300
+                hover:bg-white/[0.08]
+                disabled:opacity-50
+              "
             >
-              {loading ? "Signing in..." : "Sign in"}
+              {loading
+                ? "Signing in..."
+                : "Sign in"}
             </button>
           </div>
 
-          <p className="mt-8 text-center text-sm text-gray-400">
+          {/* SIGNUP */}
+
+          <p className="mt-8 text-center text-sm text-zinc-400">
             New to SkillScope?{" "}
+
             <Link
               to="/signup"
-              className="text-[#FF4400] font-medium hover:text-[#FF5500] transition-colors"
+              className="font-medium text-[#FF4400] transition-colors hover:text-[#ff5a1f]"
             >
               Create an account
             </Link>
           </p>
 
-          <p className="mt-12 text-center text-[10px] text-gray-600 font-mono">
-            Protected with end-to-end encrypted sessions.
+          {/* FOOTER */}
+
+          <p className="mt-10 text-center text-[10px] font-mono uppercase tracking-[0.18em] text-zinc-600">
+            Demo Preview Build • UI/UX Review
           </p>
         </div>
       </div>
 
       {/* =========================================
-          RIGHT SIDE: EDGE-TO-EDGE VISUAL PANEL
-          ========================================= */}
-      <div className="relative hidden w-1/2 lg:flex flex-col justify-center overflow-hidden border-l border-white/10 bg-[#080808]">
-        {/* Crisp Grid Background */}
+          RIGHT SIDE VISUAL
+      ========================================= */}
+
+      <div className="relative hidden w-1/2 overflow-hidden lg:flex lg:flex-col lg:justify-center">
+        {/* GRID */}
+
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] bg-[size:64px_64px]" />
 
-        {/* Deep ambient glows */}
-        <div className="absolute top-0 right-0 h-[800px] w-[800px] -translate-y-1/3 translate-x-1/3 rounded-full bg-[#FF4400]/15 blur-[160px] mix-blend-screen pointer-events-none" />
-        <div className="absolute bottom-0 left-0 h-[600px] w-[600px] translate-y-1/3 -translate-x-1/3 rounded-full bg-[#1D4ED8]/15 blur-[140px] mix-blend-screen pointer-events-none" />
+        {/* GLOW */}
 
-        {/* Quote Content */}
-        <div className="relative z-10 w-full max-w-xl mx-auto px-12">
-          <Quote size={56} className="text-[#FF4400]/50 mb-10" />
+        <div className="absolute right-0 top-0 h-[800px] w-[800px] translate-x-1/3 -translate-y-1/3 rounded-full bg-[#FF4400]/[0.06] blur-[180px]" />
 
-          <h2 className="text-[2.25rem] leading-[1.25] font-medium tracking-tight text-white mb-12">
-            "SkillScope’s AI didn't just optimize my resume; it mapped the exact
-            system design dependencies I needed to land my Senior Engineering
-            role."
+        <div className="absolute bottom-0 left-0 h-[600px] w-[600px] -translate-x-1/3 translate-y-1/3 rounded-full bg-[#2563EB]/[0.05] blur-[160px]" />
+
+        {/* CONTENT */}
+
+        <div className="relative z-10 mx-auto max-w-xl px-12">
+          <Quote
+            size={58}
+            className="mb-10 text-[#FF4400]/40"
+          />
+
+          <h2 className="mb-12 text-[2.25rem] font-medium leading-[1.25] tracking-tight text-white">
+            "SkillScope transformed
+            career planning into a modern,
+            intelligent experience that
+            feels beautifully seamless."
           </h2>
 
+          {/* PROFILE */}
+
           <div className="flex items-center gap-5">
-            <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#FF4400] to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[#FF4400]/25">
-              JD
+            <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#FF4400] to-orange-600 text-xl font-bold text-white shadow-lg shadow-[#FF4400]/20">
+              UI
             </div>
+
             <div>
-              <p className="text-lg font-medium text-white">Jane Doe</p>
+              <p className="text-lg font-medium text-white">
+                Demo Preview
+              </p>
+
               <p className="text-sm font-mono text-[#FF4400]">
-                Senior ML Engineer, TechCorp
+                SkillScope Experience
               </p>
             </div>
           </div>

@@ -47,10 +47,10 @@ export default function ResumeUploadCard({
   };
 
   return (
-    <div className="bg-[#030303] border border-white/[0.06] rounded-2xl p-8 relative overflow-hidden group">
+    <div className="bg-[#030303] border border-white/[0.06] rounded-2xl p-4 relative overflow-hidden group">
       
       {/* Technical Header */}
-      <div className="flex items-start justify-between mb-8">
+      <div className="flex items-start justify-between mb-6">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <Terminal size={14} className="text-[#FF4400]" />
