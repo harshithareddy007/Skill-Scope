@@ -47,7 +47,7 @@ export default function ResumeUploadCard({
   };
 
   return (
-    <div className="bg-[#030303] border border-white/[0.06] rounded-2xl p-4 relative overflow-hidden group">
+    <div className="bg-zinc-900 border border-white/[0.12] rounded-2xl p-4 relative overflow-hidden group shadow-md hover:shadow-lg transition-all duration-300">
       
       {/* Technical Header */}
       <div className="flex items-start justify-between mb-6">
@@ -72,7 +72,7 @@ export default function ResumeUploadCard({
         <select
           value={targetRole}
           onChange={(e) => setTargetRole(e.target.value)}
-          className="w-full bg-white/[0.02] border border-white/10 rounded-lg px-4 py-3 text-[13px] font-mono text-white outline-none focus:border-[#FF4400]/50 transition-colors duration-300 appearance-none cursor-pointer"
+          className="w-full bg-white/[0.03] border border-white/[0.10] rounded-lg px-4 py-3 text-[13px] font-mono text-white outline-none focus:border-[#FF4400]/50 hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300 appearance-none cursor-pointer"
         >
           <option value="" className="bg-[#030303]">Select parameter...</option>
           <option value="Frontend Developer" className="bg-[#030303]">Frontend Developer</option>
@@ -94,8 +94,8 @@ export default function ResumeUploadCard({
       />
 
       {/* Dropzone */}
-      <div className="border border-dashed border-white/[0.15] hover:border-[#FF4400]/50 rounded-xl p-10 text-center bg-white/[0.01] transition-all duration-300 relative group/drop">
-        <div className="w-12 h-12 rounded-lg bg-white/[0.02] border border-white/10 flex items-center justify-center mx-auto mb-4 group-hover/drop:border-[#FF4400]/30 transition-colors">
+      <div className="border border-dashed border-white/[0.15] hover:border-[#FF4400]/50 rounded-xl p-10 text-center bg-white/[0.03] transition-all duration-300 relative group/drop hover:scale-[1.01]">
+        <div className="w-12 h-12 rounded-lg bg-white/[0.03] border border-white/[0.10] flex items-center justify-center mx-auto mb-4 hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
           <Upload size={20} className="text-gray-400 group-hover/drop:text-[#FF4400] transition-colors" />
         </div>
         
@@ -108,7 +108,7 @@ export default function ResumeUploadCard({
 
         <label
           htmlFor="resumeUpload"
-          className="inline-flex items-center justify-center bg-white/[0.05] hover:bg-white/[0.1] text-white text-xs font-mono tracking-widest uppercase px-6 py-2.5 rounded border border-white/10 cursor-pointer transition-colors"
+          className="inline-flex items-center justify-center bg-white/[0.05] hover:bg-white/[0.1] text-white text-xs font-mono tracking-widest uppercase px-6 py-2.5 rounded border border-white/[0.10] cursor-pointer transition-all duration-300 hover:border-[#FF4400]/30"
         >
           Browse Files
         </label>
@@ -116,7 +116,7 @@ export default function ResumeUploadCard({
 
       {/* Selected File & Action Area */}
       {selectedFile && (
-        <div className="mt-6 p-4 border border-white/[0.06] bg-white/[0.02] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="mt-6 p-4 border border-white/[0.12] bg-white/[0.03] rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm hover:shadow-md hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
           <div className="flex items-center gap-3 overflow-hidden">
             <FileCode2 size={16} className="text-[#FF4400] shrink-0" />
             <span className="text-xs font-mono text-gray-300 truncate">

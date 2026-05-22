@@ -21,7 +21,7 @@ export default function HeroSection() {
       opacity: 1,
 
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.12,
       },
     },
   };
@@ -37,7 +37,7 @@ export default function HeroSection() {
       y: 0,
 
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.16, 1, 0.3, 1],
       },
     },
@@ -166,7 +166,7 @@ export default function HeroSection() {
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/[0.06] bg-white/[0.03] backdrop-blur-xl"
+          className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/[0.12] bg-white/[0.03] backdrop-blur-xl shadow-sm hover:shadow-md hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300"
         >
           <Terminal
             size={14}
@@ -212,11 +212,11 @@ export default function HeroSection() {
         >
           <Link
             to="/signup"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium text-white shadow-[0_8px_40px_rgba(232,93,42,0.22)] transition-all duration-300 hover:-translate-y-[2px] hover:bg-[var(--accent-hover)] active:scale-[0.98]"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-[var(--accent)] px-8 py-4 text-sm font-medium text-white shadow-[0_8px_40px_rgba(232,93,42,0.22)] transition-all duration-200 hover:-translate-y-[2px] hover:scale-[1.02] hover:bg-[var(--accent-hover)] active:scale-[0.98]"
           >
             {/* BUTTON LIGHT */}
 
-            <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)]" />
+            <div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.12),transparent)]" />
 
             <span className="relative z-10">
               Deploy Analysis
@@ -224,7 +224,7 @@ export default function HeroSection() {
 
             <ArrowRight
               size={18}
-              className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+              className="relative z-10 transition-transform duration-200 group-hover:translate-x-1"
             />
           </Link>
         </motion.div>

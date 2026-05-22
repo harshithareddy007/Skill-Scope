@@ -30,7 +30,7 @@ export default function MetricsSection() {
   return (
     <section
       id="insights"
-      className="relative overflow-hidden bg-[var(--bg-primary)] px-6 lg:px-12 py-20"
+      className="relative overflow-hidden bg-[var(--bg-primary)] px-4 sm:px-6 lg:px-12 py-16 md:py-20 lg:py-24"
     >
       {/* =========================================
           CINEMATIC BACKGROUND
@@ -46,7 +46,7 @@ export default function MetricsSection() {
           CONTENT
       ========================================= */}
 
-      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-[0.78fr_1.22fr] gap-10 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[0.78fr_1.22fr] gap-8 md:gap-10 items-center">
         {/* =========================================
             LEFT SECTION
         ========================================= */}
@@ -67,7 +67,7 @@ export default function MetricsSection() {
 
           {/* HEADING */}
 
-          <h2 className="text-[54px] leading-[0.92] tracking-[-0.07em] font-semibold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[0.92] tracking-[-0.07em] font-semibold">
             <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
               AI-native
             </span>
@@ -81,7 +81,7 @@ export default function MetricsSection() {
 
           {/* SUBTEXT */}
 
-          <p className="mt-5 max-w-md text-[15px] leading-relaxed text-zinc-400">
+          <p className="mt-4 md:mt-5 max-w-md text-sm md:text-base leading-relaxed text-zinc-400">
             Resume intelligence, skill analysis, and career planning —
             combined into one modern workflow.
           </p>
@@ -90,31 +90,31 @@ export default function MetricsSection() {
               FEATURE CARDS
           ========================================= */}
 
-          <div className="mt-10 space-y-4">
+          <div className="mt-8 md:mt-10 space-y-3 md:space-y-4">
             {features.map((feature, index) => {
               const Icon = feature.icon;
 
               return (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-[28px] border border-white/[0.05] bg-transparent transition-all duration-500 px-5 py-5 hover:border-white/[0.08]"
+                  className="group relative overflow-hidden rounded-[28px] border border-white/[0.05] bg-transparent transition-all duration-300 px-4 py-4 sm:px-5 sm:py-5 hover:border-white/[0.18] hover:-translate-y-1 hover:scale-[1.01] shadow-sm hover:shadow-[0_0_30px_rgba(255,68,0,0.04)]"
                 >
                   {/* HOVER LIGHT */}
 
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_45%)]" />
+                  <div className="absolute inset-0 opacity-100 group-hover:opacity-100 transition-opacity duration-200 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_45%)]" />
 
                   {/* TOP SHINE */}
 
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
                   <div className="relative z-10 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       {/* ICON */}
 
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.06] bg-white/[0.03] group-hover:border-[var(--accent)]/20 transition-all duration-500">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.12] bg-white/[0.03] group-hover:border-[var(--accent)]/20 transition-all duration-300 shadow-sm hover:shadow-md">
                         <Icon
                           size={20}
-                          className="text-[var(--accent)] transition-transform duration-500 group-hover:scale-110"
+                          className="text-[var(--accent)] transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
 
@@ -160,7 +160,7 @@ export default function MetricsSection() {
                   Dashboard Preview
                 </p>
 
-                <h2 className="mt-3 text-[44px] leading-[0.95] tracking-[-0.06em] font-semibold">
+                <h2 className="mt-3 text-2xl sm:text-3xl md:text-4xl leading-[0.95] tracking-[-0.06em] font-semibold">
                   <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
                     Your AI Career Workspace
                   </span>
@@ -185,23 +185,23 @@ export default function MetricsSection() {
                 DASHBOARD MOCKUP
             ========================================= */}
 
-            <div className="group relative overflow-hidden rounded-[28px] border border-white/[0.05] bg-white/[0.02] backdrop-blur-xl min-h-[380px]">
+            <div className="group relative overflow-hidden rounded-[28px] border border-white/[0.10] bg-white/[0.03] backdrop-blur-xl min-h-[380px] shadow-sm hover:shadow-md transition-all duration-300">
               {/* BACKGROUND GLOW */}
 
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(232,93,42,0.08),transparent_45%)]" />
 
               {/* FAKE DASHBOARD */}
 
-              <div className="absolute inset-0 p-5 transition-all duration-700 group-hover:blur-[2px] blur-[7px] scale-[1.03] opacity-70 group-hover:opacity-100">
-                <div className="grid grid-cols-2 gap-4 h-full">
+              <div className="absolute inset-0 p-5 transition-all duration-500 group-hover:blur-[2px] blur-[7px] scale-[1.03] opacity-70 group-hover:opacity-100">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
                   {/* CARD 1 */}
 
-                  <div className="rounded-[30px] border border-white/[0.06] bg-white/[0.025] backdrop-blur-md p-5">
+                  <div className="rounded-[30px] border border-white/[0.12] bg-white/[0.03] backdrop-blur-md p-5 shadow-sm hover:shadow-md transition-all duration-300">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       ATS SCORE
                     </p>
 
-                    <h3 className="mt-6 text-6xl font-semibold tracking-[-0.05em] text-white">
+                    <h3 className="mt-6 text-5xl font-semibold tracking-[-0.05em] text-white">
                       94%
                     </h3>
 
@@ -216,7 +216,7 @@ export default function MetricsSection() {
 
                   {/* CARD 2 */}
 
-                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
+                  <div className="rounded-[30px] border border-white/[0.12] bg-[var(--surface-secondary)] p-5 shadow-sm hover:shadow-md transition-all duration-300">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       SKILL MATCH
                     </p>
@@ -241,7 +241,7 @@ export default function MetricsSection() {
 
                   {/* CARD 3 */}
 
-                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
+                  <div className="rounded-[30px] border border-white/[0.12] bg-[var(--surface-secondary)] p-5 shadow-sm hover:shadow-md transition-all duration-300">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                       AI SUGGESTIONS
                     </p>
@@ -268,13 +268,13 @@ export default function MetricsSection() {
 
                   {/* CARD 4 */}
 
-                  <div className="rounded-[30px] border border-white/[0.06] bg-[var(--surface-secondary)] p-5">
+                  <div className="rounded-[30px] border border-white/[0.12] bg-[var(--surface-secondary)] p-5 shadow-sm hover:shadow-md transition-all duration-300">
                     <div>
                       <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-mono">
                         CAREER READINESS
                       </p>
 
-                      <h3 className="mt-3 text-5xl font-semibold tracking-[-0.05em] text-white">
+                      <h3 className="mt-3 text-4xl font-semibold tracking-[-0.05em] text-white">
                         87%
                       </h3>
                     </div>
@@ -289,7 +289,7 @@ export default function MetricsSection() {
               {/* GLASS OVERLAY */}
 
               <div
-                className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent backdrop-blur-xl transition-all duration-700 group-hover:backdrop-blur-md"
+                className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent backdrop-blur-md transition-all duration-200 group-hover:backdrop-blur-md"
                 style={{
                   maskImage:
                     "radial-gradient(circle at center, black 32%, transparent 100%)",
@@ -300,7 +300,7 @@ export default function MetricsSection() {
 
               {/* CENTER CONTENT */}
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 transition-all duration-700 group-hover:opacity-0 group-hover:scale-95">
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 transition-all duration-200 group-hover:opacity-0 group-hover:scale-95">
                 {/* LOCK */}
 
                 <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/15 backdrop-blur-xl">

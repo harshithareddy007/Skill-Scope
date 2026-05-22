@@ -209,7 +209,7 @@ export default function SignupPage() {
           {/* HEADING */}
 
           <div className="mb-10">
-            <h2 className="text-5xl font-semibold tracking-[-0.05em]">
+            <h2 className="text-4xl font-semibold tracking-[-0.05em]">
               Create account
             </h2>
 
@@ -222,13 +222,13 @@ export default function SignupPage() {
           {/* SOCIALS */}
 
           <div className="mb-6 flex items-center gap-4">
-            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-sm transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]">
+            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.10] bg-white/[0.03] text-sm transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]">
               <FcGoogle size={18} />
 
               <span>Google</span>
             </button>
 
-            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.08] bg-white/[0.02] text-sm transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]">
+            <button className="flex h-12 flex-1 items-center justify-center gap-2 rounded-2xl border border-white/[0.10] bg-white/[0.03] text-sm transition-all duration-300 hover:border-white/[0.16] hover:bg-white/[0.04]">
               <FaLinkedinIn size={16} className="text-[#0A66C2]" />
 
               <span>LinkedIn</span>
@@ -266,8 +266,8 @@ export default function SignupPage() {
                   w-full
                   rounded-2xl
                   border
-                  border-white/[0.08]
-                  bg-white/[0.02]
+                  border-white/[0.10]
+                  bg-white/[0.03]
                   px-5
                   py-4
                   pr-12
@@ -299,8 +299,8 @@ export default function SignupPage() {
                   w-full
                   rounded-2xl
                   border
-                  border-white/[0.08]
-                  bg-white/[0.02]
+                  border-white/[0.10]
+                  bg-white/[0.03]
                   px-5
                   py-4
                   pr-12
@@ -332,8 +332,8 @@ export default function SignupPage() {
                   w-full
                   rounded-2xl
                   border
-                  border-white/[0.08]
-                  bg-white/[0.02]
+                  border-white/[0.10]
+                  bg-white/[0.03]
                   px-12
                   py-4
                   pr-12

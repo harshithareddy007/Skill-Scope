@@ -158,7 +158,7 @@ export default function ProfilePage() {
             </span>
           </div>
 
-          <h1 className="mt-5 text-5xl md:text-6xl font-semibold tracking-[-0.06em] leading-[0.95]">
+          <h1 className="mt-5 text-4xl md:text-5xl font-semibold tracking-[-0.06em] leading-[0.95]">
             Your Profile
           </h1>
 
@@ -174,7 +174,7 @@ export default function ProfilePage() {
         ========================================= */}
 
         <section className="mt-14">
-          <div className="relative overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.02] p-8 lg:p-10">
+          <div className="relative overflow-hidden rounded-[36px] border border-white/[0.12] bg-white/[0.03] p-8 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300">
             {/* TOP LINE */}
 
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
@@ -190,7 +190,7 @@ export default function ProfilePage() {
 
               <div className="flex flex-col items-center">
                 <div className="relative">
-                  <div className="flex h-40 w-40 items-center justify-center rounded-[32px] border border-white/[0.06] bg-black/30">
+                  <div className="flex h-40 w-40 items-center justify-center rounded-[32px] border border-white/[0.12] bg-zinc-900/30 shadow-sm">
                     <User
                       size={60}
                       className="text-zinc-600"
@@ -304,10 +304,10 @@ export default function ProfilePage() {
         ========================================= */}
 
         <section className="mt-10">
-          <div className="overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02]">
+          <div className="overflow-hidden rounded-[32px] border border-white/[0.12] bg-white/[0.03] shadow-sm hover:shadow-md transition-all duration-300">
             {/* RESET */}
 
-            <div className="flex flex-col gap-5 border-b border-white/[0.06] p-8 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-5 border-b border-white/[0.10] p-8 md:flex-row md:items-center md:justify-between">
               <div>
                 <h2 className="text-2xl font-semibold tracking-tight">
                   Reset History
@@ -362,12 +362,12 @@ export default function ProfilePage() {
             FOOTER
         ========================================= */}
 
-        <footer className="mt-20 border-t border-white/[0.06] pt-6">
+        <footer className="mt-20 border-t border-white/[0.10] pt-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             {/* LEFT */}
 
             <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12]">
                 <div className="h-2 w-2 rounded-full bg-[#FF4400]" />
               </div>
 
@@ -421,7 +421,7 @@ function ProfileInput({
   disabled?: boolean;
 }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-white/[0.06] bg-black/20 px-5 py-4">
+    <div className="flex items-center gap-4 rounded-2xl border border-white/[0.12] bg-zinc-900/20 px-5 py-4 shadow-sm">
       <div className="text-[#FF4400]">
         {icon}
       </div>
@@ -456,7 +456,7 @@ function DataCard({
   desc: string;
 }) {
   return (
-    <div className="relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-8">
+    <div className="relative overflow-hidden rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-8 shadow-sm hover:shadow-md transition-all duration-300">
       {/* TOP LINE */}
 
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />

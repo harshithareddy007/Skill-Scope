@@ -10,7 +10,6 @@ import SolutionsSection from "../components/SolutionsSection";
 
 import RoadmapsSection from "../components/RoadmapsSection";
 
-
 export default function LandingPage() {
   return (
     <main className="relative overflow-hidden bg-[var(--bg-primary)] text-white">
@@ -47,8 +46,6 @@ export default function LandingPage() {
       ========================================= */}
 
       <div className="relative">
-        
-
         <HeroSection />
       </div>
 
@@ -75,41 +72,6 @@ export default function LandingPage() {
       ========================================= */}
 
       <RoadmapsSection />
-
-      {/* =========================================
-          REVIEW NOTE
-      ========================================= */}
-
-      <section className="relative px-6 py-10">
-        <div className="mx-auto max-w-5xl rounded-[28px] border border-white/[0.06] bg-white/[0.02] p-8 text-center backdrop-blur-xl">
-          {/* TOP LINE */}
-
-          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
-
-          <h2 className="text-2xl font-semibold tracking-[-0.04em]">
-            This is a UI/UX Concept Preview
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-gray-400">
-            SkillScope AI is currently in prototype stage and shared
-            specifically for interface, interaction, and visual design feedback.
-            Some features, AI systems, and backend workflows are simplified for
-            demonstration purposes.
-          </p>
-        </div>
-      </section>
-
-      {/* =========================================
-          FLOATING DEMO BADGE
-      ========================================= */}
-
-      <div className="fixed bottom-5 right-5 z-50">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-4 py-2 text-xs font-medium text-[#FF4400] backdrop-blur-xl">
-          <div className="h-2 w-2 rounded-full bg-[#FF4400] animate-pulse" />
-
-          Demo Preview
-        </div>
-      </div>
 
       {/* =========================================
           FOOTER
@@ -144,8 +106,8 @@ export default function LandingPage() {
           {/* CENTER */}
 
           <p className="text-center text-[12px] text-gray-500">
-            Built for UI/UX feedback, interaction testing, and portfolio
-            showcase.
+            AI-powered career growth platform for resume intelligence, skill
+            analysis, and roadmap generation.
           </p>
 
           {/* RIGHT */}

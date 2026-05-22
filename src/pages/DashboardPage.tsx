@@ -84,7 +84,7 @@ export default function DashboardPage() {
             HERO
         ========================================= */}
 
-        <section className="relative overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.02] px-10 py-9 md:px-14 md:py-12">
+        <section className="relative overflow-hidden rounded-[36px] border border-white/[0.12] bg-white/[0.03] px-10 py-9 md:px-14 md:py-12 shadow-md hover:shadow-lg hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
           {/* TOP LINE */}
 
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
@@ -106,7 +106,7 @@ export default function DashboardPage() {
 
             {/* TITLE */}
 
-            <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.07em] md:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.95] tracking-[-0.07em] md:text-5xl lg:text-6xl">
               Welcome back,
               <br />
 
@@ -147,7 +147,7 @@ export default function DashboardPage() {
 
           <div className="h-3 overflow-hidden rounded-full bg-white/[0.05]">
             <div
-              className={`h-full rounded-full bg-[#FF4400] transition-all duration-700 ${
+              className={`h-full rounded-full bg-[#FF4400] transition-all duration-200 ${
                 hasResumeAnalysis
                   ? "w-[33%]"
                   : "w-[0%]"
@@ -250,12 +250,12 @@ export default function DashboardPage() {
             FOOTER
         ========================================= */}
 
-        <footer className="mt-24 border-t border-white/[0.06] pt-6">
+        <footer className="mt-24 border-t border-white/[0.10] pt-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             {/* LEFT */}
 
             <div className="flex items-center gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.06]">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12]">
                 <div className="h-2 w-2 rounded-full bg-[#FF4400]" />
               </div>
 
@@ -320,12 +320,12 @@ function JourneyCard({
         min-h-[320px]
         p-8
         transition-all
-        duration-500
+        duration-200
         hover:-translate-y-1
         ${
           active
             ? "border-[#FF4400]/20 bg-white/[0.03]"
-            : "border-white/[0.06] bg-white/[0.02]"
+              : "border-white/[0.12] bg-white/[0.03] hover:border-[#FF4400]/30 hover:bg-white/[0.04] hover:scale-[1.01]"
         }
       `}
     >
@@ -344,7 +344,7 @@ function JourneyCard({
       <div className="relative z-10 flex h-full flex-col">
         {/* ICON */}
 
-        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.06] text-[#FF4400]">
+        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] text-[#FF4400] shadow-sm">
           {locked ? (
             <Lock size={18} />
           ) : (
@@ -420,7 +420,7 @@ function ProgressStage({
         ${
           pending
             ? "border-[#FF4400]/15 bg-[#FF4400]/[0.03]"
-            : "border-white/[0.06] bg-white/[0.02]"
+            : "border-white/[0.12] bg-white/[0.03] hover:border-[#FF4400]/30 hover:bg-white/[0.04]"
         }
       `}
     >
@@ -485,7 +485,7 @@ function StatCard({
   label: string;
 }) {
   return (
-    <div className="rounded-[28px] border border-white/[0.06] bg-white/[0.02] p-8">
+    <div className="rounded-[28px] border border-white/[0.12] bg-white/[0.03] p-8 shadow-sm hover:shadow-md transition-all duration-300">
       <h3 className="text-4xl font-semibold tracking-[-0.05em] text-white">
         {value}
       </h3>

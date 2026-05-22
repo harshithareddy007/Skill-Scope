@@ -27,31 +27,40 @@ export default function SpotlightCard({
       onMouseMove={handleMouseMove}
       whileHover={{
         y: -4,
+        scale: 1.01,
       }}
       transition={{
-        duration: 0.35,
+        duration: 0.16,
         ease: [0.16, 1, 0.3, 1],
       }}
       className={`
         group
-        relative
-        overflow-hidden
-        transition-all
-        duration-500
+relative
+overflow-hidden
+border border-white/[0.12]
+bg-white/[0.03]
+shadow-[0_0_40px_rgba(255,68,0,0.03)]
+transition-all
+duration-200
+hover:-translate-y-1
+hover:scale-[1.01]
+hover:border-[#FF4400]/30
+hover:bg-white/[0.045]
+hover:shadow-[0_0_50px_rgba(255,68,0,0.08)]
         ${className}
       `}
     >
       {/* =========================================
           MAIN SPOTLIGHT
       ========================================= */}
-
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent opacity-60" />
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(
-              280px circle at ${mouseX}px ${mouseY}px,
-              rgba(232,93,42,0.14),
+              220px circle at ${mouseX}px ${mouseY}px,
+              rgba(255,68,0,0.10),
               transparent 65%
             )
           `,
@@ -63,7 +72,7 @@ export default function SpotlightCard({
       ========================================= */}
 
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{
           background: useMotionTemplate`
             radial-gradient(

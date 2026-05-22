@@ -172,7 +172,7 @@ export default function CareerRoadmapPage() {
             </span>
           </div>
 
-          <h1 className="mt-6 text-5xl md:text-6xl font-semibold tracking-[-0.06em] leading-[0.95]">
+          <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-[-0.06em] leading-[0.95]">
             Career Roadmap
           </h1>
 
@@ -189,7 +189,7 @@ export default function CareerRoadmapPage() {
         ========================================= */}
 
         <section className="mt-14">
-          <div className="relative overflow-hidden rounded-[32px] border border-[#FF4400]/20 bg-white/[0.02] p-8">
+          <div className="relative overflow-hidden rounded-[32px] border border-[#FF4400]/20 bg-white/[0.03] p-8 shadow-sm">
             {/* TOP LINE */}
 
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
@@ -237,7 +237,7 @@ export default function CareerRoadmapPage() {
         ========================================= */}
 
         {loading ? (
-          <div className="mt-10 rounded-[30px] border border-white/[0.06] bg-white/[0.02] p-10 text-center">
+          <div className="mt-10 rounded-[30px] border border-white/[0.12] bg-white/[0.03] p-10 text-center shadow-sm hover:shadow-md transition-all duration-300">
             <div className="mx-auto h-12 w-12 rounded-full border-2 border-[#FF4400] border-t-transparent animate-spin" />
 
             <p className="mt-5 text-zinc-400">
@@ -291,7 +291,7 @@ export default function CareerRoadmapPage() {
             ========================================= */}
 
             <section className="mt-16">
-              <div className="rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-10 text-center">
+              <div className="rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-10 text-center shadow-sm hover:shadow-md transition-all duration-300">
                 <h2 className="text-3xl font-semibold tracking-tight">
                   Ready to Recheck Your Resume?
                 </h2>
@@ -356,7 +356,7 @@ function RoadmapCard({
         ${
           completed
             ? "border-[#00FF66]/20 bg-[#00FF66]/[0.03]"
-            : "border-white/[0.06] bg-white/[0.02]"
+            : "border-white/[0.12] bg-white/[0.03] hover:border-[#FF4400]/30 hover:bg-white/[0.04]"
         }
       `}
     >

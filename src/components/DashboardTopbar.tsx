@@ -54,7 +54,7 @@ export default function DashboardTopbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 lg:px-8 pt-5">
       <div className="max-w-7xl mx-auto">
-        <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-[#050505]/80 backdrop-blur-2xl">
+        <div className="relative overflow-hidden rounded-2xl border border-white/[0.12] bg-zinc-900/80 backdrop-blur-2xl shadow-sm hover:shadow-md transition-all duration-300">
           {/* TOP LINE */}
 
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
@@ -73,7 +73,7 @@ export default function DashboardTopbar() {
             <Link to="/dashboard" className="flex items-center gap-4 group">
               {/* LOGO */}
 
-              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.06] overflow-hidden">
+              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.12] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#FF4400]" />
               </div>
 
@@ -170,7 +170,7 @@ export default function DashboardTopbar() {
 
               {/* MOBILE MENU */}
 
-              <button className="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.06] text-gray-400 transition-all duration-300 hover:text-white">
+              <button className="lg:hidden flex items-center justify-center w-11 h-11 rounded-xl border border-white/[0.12] text-gray-400 transition-all duration-300 hover:text-white hover:border-[#FF4400]/30">
                 <Menu size={20} strokeWidth={1.7} />
               </button>
             </div>

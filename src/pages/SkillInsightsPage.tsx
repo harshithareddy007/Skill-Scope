@@ -241,7 +241,7 @@ export default function SkillInsightsPage() {
             </span>
           </div>
 
-          <h1 className="mt-6 text-5xl md:text-6xl font-semibold tracking-[-0.06em] leading-[0.95]">
+          <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-[-0.06em] leading-[0.95]">
             Skill Gap Analysis
           </h1>
 
@@ -258,7 +258,7 @@ export default function SkillInsightsPage() {
         ========================================= */}
 
         <section className="mt-14">
-          <div className="relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-8">
+          <div className="relative overflow-hidden rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-8 shadow-sm hover:shadow-md transition-all duration-300">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
 
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,68,0,0.08),transparent_55%)]" />
@@ -295,7 +295,7 @@ export default function SkillInsightsPage() {
                     rounded-2xl
                     border
                     border-white/[0.08]
-                    bg-black/30
+                    bg-zinc-900/30
                     px-5
                     py-4
                     text-sm
@@ -369,7 +369,7 @@ export default function SkillInsightsPage() {
         ========================================= */}
 
         <section className="mt-8">
-          <div className="relative overflow-hidden rounded-[32px] border border-[#FF4400]/20 bg-white/[0.02] p-8">
+          <div className="relative overflow-hidden rounded-[32px] border border-[#FF4400]/20 bg-white/[0.03] p-8 shadow-sm">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
 
             <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center">
@@ -392,7 +392,7 @@ export default function SkillInsightsPage() {
 
                 <div className="mt-6 h-3 overflow-hidden rounded-full bg-white/[0.05]">
                   <div
-                    className="h-full rounded-full bg-[#FF4400] transition-all duration-700"
+                    className="h-full rounded-full bg-[#FF4400] transition-all duration-200"
                     style={{
                       width: `${matchPercentage}%`,
                     }}
@@ -413,7 +413,7 @@ export default function SkillInsightsPage() {
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="rounded-[30px] border border-white/[0.06] bg-white/[0.02] p-8 min-h-[260px]">
+            <div className="rounded-[30px] border border-white/[0.12] bg-white/[0.03] p-8 min-h-[260px] shadow-sm hover:shadow-md transition-all duration-300">
               <h3 className="text-lg font-semibold">
                 Your Resume Skills
               </h3>
@@ -433,7 +433,7 @@ export default function SkillInsightsPage() {
               </div>
             </div>
 
-            <div className="rounded-[30px] border border-white/[0.06] bg-white/[0.02] p-8 min-h-[260px]">
+            <div className="rounded-[30px] border border-white/[0.12] bg-white/[0.03] p-8 min-h-[260px] shadow-sm hover:shadow-md transition-all duration-300">
               <h3 className="text-lg font-semibold">
                 Target Role Skills
               </h3>
@@ -514,7 +514,7 @@ export default function SkillInsightsPage() {
         ========================================= */}
 
         <section className="mt-10">
-          <div className="rounded-[32px] border border-[#FF4400]/20 bg-white/[0.02] p-8 lg:p-10">
+          <div className="rounded-[32px] border border-[#FF4400]/20 bg-white/[0.03] p-8 lg:p-10 shadow-sm">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <h2 className="text-3xl font-semibold tracking-tight">
@@ -586,7 +586,7 @@ function SkillSection({
 }) {
   return (
     <div
-      className={`rounded-[30px] border ${borderColor} bg-white/[0.02] p-8`}
+      className={`rounded-[30px] border ${borderColor} bg-white/[0.03] p-8 shadow-sm hover:shadow-md transition-all duration-300`}
     >
       <div className="flex items-center gap-4">
         <div
@@ -606,7 +606,7 @@ function SkillSection({
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border border-white/[0.06] bg-black/20 p-6">
+      <div className="mt-8 rounded-2xl border border-white/[0.12] bg-zinc-900/20 p-6 shadow-sm">
         {items.length > 0 ? (
           <div className="flex flex-wrap gap-3">
             {items.map(

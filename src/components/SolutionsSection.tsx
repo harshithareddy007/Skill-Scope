@@ -82,7 +82,7 @@ export default function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="relative h-[calc(100vh-94px)] overflow-hidden bg-[var(--bg-primary)] flex items-center mt-[94px]"
+      className="relative min-h-auto overflow-hidden bg-[var(--bg-primary)] flex items-center mt-[94px] py-16 md:py-24 lg:py-32"
     >
       {/* =========================================
           CINEMATIC BACKGROUND
@@ -99,7 +99,7 @@ export default function SolutionsSection() {
           CONTENT
       ========================================= */}
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-10 py-10">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-4 md:py-6 lg:py-10">
         {/* =========================================
             HEADER
         ========================================= */}
@@ -117,7 +117,7 @@ export default function SolutionsSection() {
 
           {/* HEADING */}
 
-          <h2 className="mt-4 text-[40px] md:text-[52px] leading-[1.1] tracking-[-0.06em] font-semibold">
+          <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-[-0.06em] font-semibold">
             <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
               Built for every stage of
             </span>
@@ -129,7 +129,7 @@ export default function SolutionsSection() {
 
           {/* SUBTEXT */}
 
-          <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-zinc-400">
+          <p className="mt-3 max-w-2xl text-sm md:text-base leading-relaxed text-zinc-400">
             SkillScope adapts dynamically to different career journeys —
             intelligently reshaping workflows for every user type.
           </p>
@@ -139,7 +139,7 @@ export default function SolutionsSection() {
             MAIN LAYOUT
         ========================================= */}
 
-        <div className="mt-6 grid grid-cols-12 gap-5 h-[330px]">
+        <div className="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5 auto-rows-auto md:auto-rows-[330px]">
           {/* =========================================
               ACTIVE CARD
           ========================================= */}
@@ -160,9 +160,9 @@ export default function SolutionsSection() {
                 y: -20,
               }}
               transition={{
-                duration: 0.45,
+                duration: 0.3,
               }}
-              className="col-span-12 lg:col-span-7 relative overflow-hidden rounded-[36px] border border-white/[0.05] p-7"
+              className="col-span-1 md:col-span-12 lg:col-span-7 cursor-glow-target relative overflow-hidden rounded-[20px] sm:rounded-[28px] md:rounded-[36px] border border-white/[0.05] p-4 sm:p-5 md:p-7 shadow-sm hover:shadow-[0_0_30px_rgba(255,68,0,0.08)] hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300 min-h-[280px] md:min-h-auto"
             >
               {/* GLOW */}
 
@@ -176,15 +176,15 @@ export default function SolutionsSection() {
                 {/* LEFT */}
 
                 <div>
-                  <div className="flex items-center justify-center w-16 h-16 rounded-2xl border border-white/[0.06] bg-[var(--surface-primary)]">
+                  <div className="flex items-center justify-center w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 rounded-lg sm:rounded-xl md:rounded-2xl border border-white/[0.12] bg-[var(--surface-primary)] shadow-md hover:shadow-lg hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
                     <active.icon
-                      size={28}
-                      className="text-[var(--accent)]"
+                      size={20}
+                      className="text-[var(--accent)] sm:w-[24px] md:w-[28px]"
                       strokeWidth={1.8}
                     />
                   </div>
 
-                  <h3 className="mt-6 text-[44px] leading-none tracking-[-0.06em] font-semibold">
+                  <h3 className="mt-4 sm:mt-5 md:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-none tracking-[-0.06em] font-semibold">
                     <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
                       {active.title}
                     </span>
@@ -194,11 +194,11 @@ export default function SolutionsSection() {
                 {/* RIGHT */}
 
                 <div className="text-right">
-                  <h4 className="text-[52px] leading-none tracking-[-0.06em] font-semibold text-[var(--accent)]">
+                  <h4 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl leading-none tracking-[-0.06em] font-semibold text-[var(--accent)]">
                     {active.stat}
                   </h4>
 
-                  <p className="mt-3 text-[11px] uppercase tracking-[0.18em] font-mono text-zinc-500">
+                  <p className="mt-2 md:mt-3 text-[9px] sm:text-[10px] md:text-[11px] uppercase tracking-[0.18em] font-mono text-zinc-500">
                     {active.label}
                   </p>
                 </div>
@@ -218,7 +218,7 @@ export default function SolutionsSection() {
                 transition={{
                   delay: 0.1,
                 }}
-                className="relative z-10 mt-6 max-w-lg text-[15px] leading-relaxed text-zinc-400"
+                className="relative z-10 mt-4 md:mt-6 max-w-lg text-xs sm:text-sm md:text-base leading-relaxed text-zinc-400"
               >
                 {active.description}
               </motion.p>
@@ -229,8 +229,8 @@ export default function SolutionsSection() {
               SIDE STACK
           ========================================= */}
 
-          <div className="col-span-12 lg:col-span-5 flex flex-col gap-4">
-            {sideCards.map((item, index) => {
+          <div className="col-span-1 md:col-span-12 lg:col-span-5 flex flex-col gap-3 md:gap-4">
+            {sideCards.map((item) => {
               const Icon = item.icon;
 
               return (
@@ -239,41 +239,43 @@ export default function SolutionsSection() {
                   layout
                   whileHover={{
                     y: -3,
+                    scale: 1.01,
                   }}
                   transition={{
-                    duration: 0.25,
+                    duration: 0.2,
                   }}
                   className={`
 group
+cursor-glow-target
 relative
 overflow-hidden
-rounded-[30px]
+rounded-[18px] sm:rounded-[24px] md:rounded-[30px]
 border border-white/[0.05]
-px-6 py-5
-transition-all duration-500
+px-4 sm:px-5 md:px-6 py-4 md:py-5
+transition-all duration-300
 hover:border-[var(--accent)]/15
 flex flex-col justify-between
-
-${index === 0 ? "h-[112px]" : "h-[104px]"}
+shadow-sm hover:shadow-[0_0_30px_rgba(255,68,0,0.08)] hover:-translate-y-1 hover:scale-[1.01]
+min-h-[100px] md:min-h-auto
 `}
                 >
                   {/* HOVER GLOW */}
 
-                  <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.10),transparent_55%)]" />
+                  <div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.10),transparent_55%)]" />
 
                   {/* TOP */}
 
                   <div className="relative z-10 flex items-start justify-between">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 md:gap-4">
                       {/* ICON */}
 
-                      <div className="flex items-center justify-center w-12 h-12 rounded-2xl border border-white/[0.05] bg-[var(--surface-primary)]">
-                        <Icon size={20} className="text-[var(--accent)]" />
+                      <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-lg sm:rounded-xl md:rounded-2xl border border-white/[0.05] bg-[var(--surface-primary)]">
+                        <Icon size={18} className="text-[var(--accent)] sm:w-[20px] md:w-[20px]" />
                       </div>
 
                       {/* TITLE */}
 
-                      <h4 className="text-[20px] leading-none tracking-[-0.05em] font-semibold">
+                      <h4 className="text-sm sm:text-base md:text-lg leading-tight tracking-[-0.05em] font-semibold">
                         <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
                           {item.title}
                         </span>
@@ -282,14 +284,14 @@ ${index === 0 ? "h-[112px]" : "h-[104px]"}
 
                     {/* STAT */}
 
-                    <span className="text-[20px] font-semibold tracking-[-0.05em] text-[var(--accent)]">
+                    <span className="text-base sm:text-lg md:text-xl font-semibold tracking-[-0.05em] text-[var(--accent)] flex-shrink-0">
                       {item.stat}
                     </span>
                   </div>
 
                   {/* LABEL */}
 
-                  <p className="relative z-10 text-[9px] uppercase tracking-[0.18em] font-mono text-zinc-600 pl-16">
+                  <p className="relative z-10 text-[7px] sm:text-[8px] md:text-[9px] uppercase tracking-[0.15em] md:tracking-[0.18em] font-mono text-zinc-600 pl-12 sm:pl-14 md:pl-16">
                     {item.label}
                   </p>
                 </motion.div>

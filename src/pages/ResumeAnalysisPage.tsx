@@ -174,7 +174,7 @@ export default function ResumeAnalysisPage() {
             </span>
           </div>
 
-          <h1 className="mt-6 text-5xl md:text-6xl font-semibold tracking-[-0.06em] leading-[0.95]">
+          <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-[-0.06em] leading-[0.95]">
             Resume Analysis
           </h1>
 
@@ -194,13 +194,13 @@ export default function ResumeAnalysisPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* UPLOAD CARD */}
 
-            <div className="relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-8 min-h-[340px]">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-8 min-h-[340px] shadow-sm hover:shadow-md transition-all duration-300">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
 
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,68,0,0.08),transparent_55%)]" />
 
               <div className="relative z-10">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.06] text-[#FF4400]">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] text-[#FF4400] shadow-sm">
                   <Upload size={22} />
                 </div>
 
@@ -215,7 +215,7 @@ export default function ResumeAnalysisPage() {
                   analysis.
                 </p>
 
-                <div className="mt-8 rounded-[28px] border border-dashed border-white/[0.08] bg-black/20 px-6 py-14 text-center">
+                <div className="mt-8 rounded-[28px] border border-dashed border-white/[0.08] bg-zinc-900/20 px-6 py-14 text-center">
                   <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 text-[#FF4400]">
                     {uploadedFile ||
                     uploadedFileName ? (
@@ -341,7 +341,7 @@ export default function ResumeAnalysisPage() {
 
             {/* ATS SCORE */}
 
-            <div className="relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-8 min-h-[340px]">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-8 min-h-[340px] shadow-sm hover:shadow-md transition-all duration-300">
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF4400]/20 to-transparent" />
 
               <div className="relative z-10">
@@ -365,7 +365,7 @@ export default function ResumeAnalysisPage() {
 
                 <div className="mt-10 h-3 overflow-hidden rounded-full bg-white/[0.05]">
                   <div
-                    className="h-full rounded-full bg-[#FF4400] transition-all duration-700"
+                    className="h-full rounded-full bg-[#FF4400] transition-all duration-200"
                     style={{
                       width: `${atsScore}%`,
                     }}
@@ -417,7 +417,7 @@ export default function ResumeAnalysisPage() {
         {/* AI INSIGHTS */}
 
         <section className="mt-8">
-          <div className="rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-8 lg:p-10">
+          <div className="rounded-[32px] border border-white/[0.12] bg-white/[0.03] p-8 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300">
             <h2 className="text-[30px] font-semibold tracking-[-0.04em]">
               AI Suggestions & Insights
             </h2>
@@ -540,7 +540,7 @@ function ATSMetric({
   value: string;
 }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-white/[0.06] bg-black/20 px-5 py-4">
+    <div className="flex items-center justify-between rounded-2xl border border-white/[0.12] bg-zinc-900/20 px-5 py-4 shadow-sm">
       <p className="text-sm text-zinc-300">
         {title}
       </p>
@@ -581,7 +581,7 @@ function InsightCard({
         </h3>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-white/[0.06] bg-black/20 p-6">
+      <div className="mt-5 rounded-2xl border border-white/[0.12] bg-zinc-900/20 p-6 shadow-sm">
         {analyzed ? (
           <ul className="space-y-3 text-sm leading-relaxed text-zinc-300">
             {items.length >

@@ -47,7 +47,7 @@ export default function FeatureCards() {
   return (
     <section
       id="platform"
-      className="relative overflow-hidden bg-[var(--bg-primary)] px-6 lg:px-12 py-28"
+      className="relative overflow-hidden bg-[var(--bg-primary)] px-4 sm:px-6 lg:px-12 py-16 md:py-24 lg:py-28"
     >
       {/* =========================================
           CINEMATIC BACKGROUND
@@ -81,7 +81,7 @@ export default function FeatureCards() {
 
           {/* HEADING */}
 
-          <h2 className="text-[54px] leading-[1.1] tracking-[-0.04em] font-semibold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-[-0.04em] font-semibold">
             <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
               Everything required
             </span>
@@ -97,7 +97,7 @@ export default function FeatureCards() {
 
           {/* SUBTEXT */}
 
-          <p className="mt-4 text-[18px] leading-relaxed text-zinc-400 max-w-3xl">
+          <p className="mt-4 text-sm md:text-base lg:text-lg leading-relaxed text-zinc-400 max-w-3xl">
             SkillScope combines ATS intelligence, skill-gap analysis, and
             AI-powered career systems into one futuristic workflow.
           </p>
@@ -107,14 +107,14 @@ export default function FeatureCards() {
             FEATURE CARDS
         ========================================= */}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mt-8 md:mt-12">
           {features.map((feature, index) => {
             const Icon = feature.icon;
 
             return (
               <SpotlightCard
                 key={index}
-                className="group relative h-[360px] rounded-[30px] overflow-hidden border border-[var(--border-primary)] bg-white/[0.025] backdrop-blur-md"
+                className="group cursor-glow-target relative rounded-[18px] sm:rounded-[24px] md:rounded-[30px] overflow-hidden border border-[var(--border-primary)] bg-white/[0.025] backdrop-blur-md shadow-sm hover:shadow-[0_0_30px_rgba(255,68,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.01] min-h-[320px] md:min-h-[360px]"
               >
                 {/* =========================================
                     CARD LIGHTING
@@ -126,7 +126,7 @@ export default function FeatureCards() {
 
                 {/* HOVER GLOW */}
 
-                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_45%)]" />
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100 bg-[radial-gradient(circle_at_top_right,rgba(232,93,42,0.12),transparent_45%)]" />
 
                 {/* =========================================
                     CONTENT
@@ -138,10 +138,10 @@ export default function FeatureCards() {
                   <div className="flex items-start justify-between">
                     {/* ICON */}
 
-                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-white/[0.06] bg-white/[0.03]">
+                    <div className="flex items-center justify-center w-14 h-14 rounded-2xl border border-white/[0.12] bg-white/[0.03] shadow-sm hover:shadow-md hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
                       <Icon
                         size={22}
-                        className="text-zinc-400 transition-all duration-500 group-hover:text-[var(--accent)] group-hover:scale-110"
+                        className="text-zinc-400 transition-transform duration-300 group-hover:scale-110 group-hover:text-[var(--accent)]"
                       />
                     </div>
 
@@ -177,7 +177,7 @@ export default function FeatureCards() {
 
                     {/* DOT */}
 
-                    <div className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] opacity-50 transition-all duration-500 group-hover:opacity-100 group-hover:shadow-[0_0_16px_rgba(232,93,42,0.8)]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] opacity-50 transition-all duration-200 group-hover:opacity-100 group-hover:shadow-[0_0_16px_rgba(232,93,42,0.8)]" />
                   </div>
                 </div>
 

@@ -115,7 +115,7 @@ export default function RoadmapsSection() {
     <section
       id="roadmaps"
       ref={containerRef}
-      className="relative overflow-hidden bg-[var(--bg-primary)] py-32 perspective-[1500px]"
+      className="relative overflow-hidden bg-[var(--bg-primary)] py-16 md:py-24 lg:py-32 perspective-[1500px]"
     >
       {/* =========================================
           CINEMATIC BACKGROUND
@@ -144,12 +144,12 @@ export default function RoadmapsSection() {
         style={{
           translateZ: -50,
         }}
-        className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 mb-24"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 mb-12 md:mb-16 lg:mb-24"
       >
         <div className="max-w-3xl">
           {/* LABEL */}
 
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/[0.06]">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/[0.12] shadow-md hover:shadow-lg hover:border-[#FF4400]/30 hover:bg-white/[0.04] transition-all duration-300">
             <Terminal size={14} className="text-[var(--accent)]" />
 
             <span className="text-[11px] uppercase tracking-[0.18em] font-mono text-[var(--accent)]/80">
@@ -159,7 +159,7 @@ export default function RoadmapsSection() {
 
           {/* HEADING */}
 
-          <h2 className="mt-8 text-[44px] md:text-[64px] leading-[1.1] tracking-[-0.04em] font-semibold">
+          <h2 className="mt-6 sm:mt-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-[-0.04em] font-semibold">
             <span className="bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
               Career growth,
             </span>{" "}
@@ -170,7 +170,7 @@ export default function RoadmapsSection() {
 
           {/* SUBTEXT */}
 
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-400">
+          <p className="mt-4 md:mt-6 max-w-2xl text-sm md:text-base lg:text-lg leading-relaxed text-zinc-400">
             SkillScope generates adaptive execution systems that evolve with
             your skills, goals, and industry positioning.
           </p>
@@ -187,9 +187,9 @@ export default function RoadmapsSection() {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative z-20 max-w-7xl mx-auto px-6 lg:px-10"
+        className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10"
       >
-        <div className="relative py-20 min-h-[1600px] flex justify-center transform-style-3d">
+        <div className="relative py-8 md:py-12 lg:py-20 flex justify-center transform-style-3d">
           {/* =========================================
               SVG PATH
           ========================================= */}
@@ -236,7 +236,7 @@ export default function RoadmapsSection() {
               CARDS
           ========================================= */}
 
-          <div className="w-full relative flex flex-col gap-32 lg:gap-0 transform-style-3d">
+          <div className="w-full relative flex flex-col gap-12 md:gap-20 lg:gap-0 transform-style-3d">
             {roadmapSteps.map((step, index) => {
               const isLeft = index % 2 === 0;
 
@@ -304,11 +304,12 @@ function RoadmapCard({
 `;
   return (
     <div
-      className={`relative flex w-full ${
-        isLeft ? "lg:justify-start" : "lg:justify-end"
-      } lg:absolute`}
+      className={
+        isLeft
+          ? "relative flex w-full justify-center lg:justify-start"
+          : "relative flex w-full justify-center lg:justify-end"
+      }
       style={{
-        top: `${index * 320}px`,
         transformStyle: "preserve-3d",
       }}
     >
@@ -319,7 +320,7 @@ function RoadmapCard({
           z: translateZ,
           boxShadow,
         }}
-        className="group relative w-full lg:w-[45%] rounded-[30px] border border-white/[0.05] p-8 transition-all duration-500 hover:border-[var(--accent)]/20 z-20 overflow-hidden"
+        className="group cursor-glow-target relative w-full lg:w-[45%] rounded-[30px] border border-white/[0.12] p-8 transition-all duration-300 hover:border-[var(--accent)]/20 z-20 overflow-hidden shadow-sm hover:shadow-[0_0_30px_rgba(255,68,0,0.08)] hover:-translate-y-1 hover:scale-[1.01]"
       >
         {/* GLOW */}
 
@@ -336,7 +337,7 @@ function RoadmapCard({
           <div className="flex items-center gap-4">
             {/* ICON */}
 
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.05] bg-[var(--surface-primary)] shadow-inner group-hover:translate-z-10 transition-transform duration-300">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/[0.12] bg-[var(--surface-primary)] shadow-inner transition-transform duration-300 group-hover:scale-110">
               <Sparkles size={24} className="text-[var(--accent)]" />
             </div>
 
@@ -364,8 +365,8 @@ function RoadmapCard({
 
         {/* BOTTOM LINE */}
 
-        <div className="relative z-10 mt-8 flex items-center gap-3">
-          <div className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_14px_rgba(232,93,42,0.8)]" />
+          <div className="relative z-10 mt-8 flex items-center gap-3">
+          <div className="h-2.5 w-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_14px_rgba(255,68,0,0.08)]" />
 
           <div className="h-px flex-1 bg-gradient-to-r from-[var(--accent)]/50 to-transparent" />
         </div>
