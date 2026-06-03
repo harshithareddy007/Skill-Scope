@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
-import SignupPage from "../pages/SignupPage";
-import LoginPage from "../pages/LoginPage";
+import AuthPage from "../pages/AuthPage";
 import DashboardPage from "../pages/DashboardPage";
 import ResumeAnalysisPage from "../pages/ResumeAnalysisPage";
 import SkillInsightsPage from "../pages/SkillInsightsPage";
@@ -14,8 +13,8 @@ function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/signup" element={<AuthPage />} />
         <Route
           path="/dashboard"
           element={

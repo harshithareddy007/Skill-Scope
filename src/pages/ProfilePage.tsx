@@ -13,44 +13,38 @@ import {
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
 export default function ProfilePage() {
+  const navigate = useNavigate();
+
   /* =========================================
      STATES
   ========================================= */
+  const [loading, setLoading] = useState(false);
 
-  const [loading, setLoading] =
-    useState(false);
-
-  const [fullName, setFullName] =
-    useState("Harshavardhan");
-
-  const [profession, setProfession] =
-    useState(
-      "UI/UX Designer & Frontend Developer"
-    );
-
-  const [email, setEmail] =
-    useState(
-      "demo@skillscope.ai"
-    );
-
-  /* =========================================
-     DEMO LOAD
-  ========================================= */
+  const [fullName, setFullName] = useState("");
+  const [profession, setProfession] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
-    setFullName(
-      "Harshavardhan"
-    );
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
-    setProfession(
-      "UI/UX Designer & Frontend Developer"
-    );
+      if (!user) return;
 
-    setEmail(
-      "demo@skillscope.ai"
-    );
+      setEmail(user.email || "");
+
+      setFullName(
+        user.user_metadata?.full_name || user.user_metadata?.name || "",
+      );
+      setProfession("Student");
+    };
+
+    fetchUser();
   }, []);
 
   /* =========================================
@@ -63,9 +57,7 @@ export default function ProfilePage() {
     setTimeout(() => {
       setLoading(false);
 
-      alert(
-        "Demo Preview: Profile updated successfully."
-      );
+      alert("Demo Preview: Profile updated successfully.");
     }, 1500);
   };
 
@@ -73,29 +65,29 @@ export default function ProfilePage() {
      RESET HISTORY
   ========================================= */
 
-  const handleResetHistory =
-    async () => {
-      const confirmReset =
-        window.confirm(
-          "Demo Preview: Reset profile history?"
-        );
+  const handleResetHistory = async () => {
+    const confirmReset = window.confirm("Demo Preview: Reset profile history?");
 
-      if (!confirmReset)
-        return;
+    if (!confirmReset) return;
 
-      alert(
-        "Demo Preview: History reset successfully."
-      );
-    };
+    alert("Demo Preview: History reset successfully.");
+  };
 
   /* =========================================
      LOGOUT
   ========================================= */
 
   const handleLogout = async () => {
-    alert(
-      "Demo Preview: Logout successful."
-    );
+    try {
+      await supabase.auth.signOut();
+
+      localStorage.clear();
+      sessionStorage.clear();
+
+      navigate("/login", { replace: true });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -163,8 +155,7 @@ export default function ProfilePage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-zinc-400">
-            Manage your personal information,
-            saved reports, and career
+            Manage your personal information, saved reports, and career
             progress.
           </p>
         </section>
@@ -191,10 +182,7 @@ export default function ProfilePage() {
               <div className="flex flex-col items-center">
                 <div className="relative">
                   <div className="flex h-40 w-40 items-center justify-center rounded-[32px] border border-white/[0.12] bg-zinc-900/30 shadow-sm">
-                    <User
-                      size={60}
-                      className="text-zinc-600"
-                    />
+                    <User size={60} className="text-zinc-600" />
                   </div>
 
                   {/* EDIT BUTTON */}
@@ -207,9 +195,7 @@ export default function ProfilePage() {
                 {/* INITIALS */}
 
                 <div className="mt-5 flex h-12 w-12 items-center justify-center rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 text-sm font-medium text-[#FF4400]">
-                  {fullName
-                    ?.slice(0, 2)
-                    .toUpperCase()}
+                  {fullName?.slice(0, 2).toUpperCase()}
                 </div>
               </div>
 
@@ -227,26 +213,16 @@ export default function ProfilePage() {
                     icon={<User size={18} />}
                     placeholder="Full Name"
                     value={fullName}
-                    onChange={(e) =>
-                      setFullName(
-                        e.target.value
-                      )
-                    }
+                    onChange={(e) => setFullName(e.target.value)}
                   />
 
                   {/* PROFESSION */}
 
                   <ProfileInput
-                    icon={
-                      <Briefcase size={18} />
-                    }
+                    icon={<Briefcase size={18} />}
                     placeholder="Profession"
                     value={profession}
-                    onChange={(e) =>
-                      setProfession(
-                        e.target.value
-                      )
-                    }
+                    onChange={(e) => setProfession(e.target.value)}
                   />
 
                   {/* EMAIL */}
@@ -268,9 +244,7 @@ export default function ProfilePage() {
                 >
                   <Save size={16} />
 
-                  {loading
-                    ? "Saving..."
-                    : "Save Changes"}
+                  {loading ? "Saving..." : "Save Changes"}
                 </button>
               </div>
             </div>
@@ -314,20 +288,15 @@ export default function ProfilePage() {
                 </h2>
 
                 <p className="mt-2 text-sm text-zinc-500">
-                  Remove saved reports,
-                  roadmap history, and ATS
-                  results.
+                  Remove saved reports, roadmap history, and ATS results.
                 </p>
               </div>
 
               <button
-                onClick={
-                  handleResetHistory
-                }
+                onClick={handleResetHistory}
                 className="inline-flex items-center gap-3 rounded-full border border-[#FF4400]/20 bg-[#FF4400]/10 px-5 py-3 text-sm text-[#FF4400] transition-all hover:bg-[#FF4400]/20"
               >
                 <RotateCcw size={16} />
-
                 Reset
               </button>
             </div>
@@ -341,8 +310,7 @@ export default function ProfilePage() {
                 </h2>
 
                 <p className="mt-2 text-sm text-zinc-500">
-                  Securely sign out from your
-                  SkillScope workspace.
+                  Securely sign out from your SkillScope workspace.
                 </p>
               </div>
 
@@ -351,7 +319,6 @@ export default function ProfilePage() {
                 className="inline-flex items-center gap-3 rounded-full border border-white/[0.08] bg-transparent px-5 py-3 text-sm text-zinc-300 transition-all hover:border-white/[0.14] hover:bg-white/[0.05] hover:text-white"
               >
                 <LogOut size={16} />
-
                 Logout
               </button>
             </div>
@@ -377,8 +344,7 @@ export default function ProfilePage() {
                 </h3>
 
                 <p className="text-sm text-zinc-500">
-                  AI-powered career growth
-                  workspace.
+                  AI-powered career growth workspace.
                 </p>
               </div>
             </div>
@@ -415,16 +381,12 @@ function ProfileInput({
   icon: React.ReactNode;
   placeholder: string;
   value?: string;
-  onChange?: (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
 }) {
   return (
     <div className="flex items-center gap-4 rounded-2xl border border-white/[0.12] bg-zinc-900/20 px-5 py-4 shadow-sm">
-      <div className="text-[#FF4400]">
-        {icon}
-      </div>
+      <div className="text-[#FF4400]">{icon}</div>
 
       <input
         type="text"
@@ -472,13 +434,9 @@ function DataCard({
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              {title}
-            </h2>
+            <h2 className="text-2xl font-semibold tracking-tight">{title}</h2>
 
-            <p className="mt-2 text-sm text-zinc-500">
-              {desc}
-            </p>
+            <p className="mt-2 text-sm text-zinc-500">{desc}</p>
           </div>
         </div>
 

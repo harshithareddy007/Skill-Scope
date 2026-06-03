@@ -6,27 +6,24 @@ type ProtectedRouteProps = {
   children: React.ReactNode;
 };
 
-export default function ProtectedRoute({
-  children,
-}: ProtectedRouteProps) {
-
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-
-    const checkUser = async () => {
-      const { data } = await supabase.auth.getSession();
-
-      if (data.session) {
-        setAuthenticated(true);
-      }
-
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setAuthenticated(!!session);
       setLoading(false);
-    };
+    });
 
-    checkUser();
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setAuthenticated(!!session);
+      setLoading(false);
+    });
 
+    return () => subscription.unsubscribe();
   }, []);
 
   if (loading) {
